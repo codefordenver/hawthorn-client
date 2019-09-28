@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+li {
+  list-style-type: none;
+}
+
+#avatar {
+  border-radius: 50%;
+  width: 50px;
+}
+
+#post-body {
+  margin-left: 20px;
+}

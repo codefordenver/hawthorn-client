@@ -1,102 +1,107 @@
 import React from 'react';
 import './App.css';
-import uuidv1 from 'uuid/v1';
+import ApolloClient from 'apollo-boost';
+import { gql } from 'apollo-boost';
+import { ApolloProvider, useQuery, useMutation } from '@apollo/react-hooks';
 
-class Conversation extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      conversations: [
-        {
-          id: uuidv1(),
-          prompt: "Who are you?",
-          responses: ["I am Atti. Hello!", "Who wants to know?", "Pooh!"],
+const client = new ApolloClient({
+  uri: 'http://localhost:4000'
+});
+
+const PUBLISHED_PROMPTS = gql`
+  query {
+    publishedPrompts {
+      id
+      title
+      posts {
+        id
+        title
+        author {
+          name
         }
-      ],
-    };
-    this.handlePromptSubmit = this.handlePromptSubmit.bind(this);
-    this.handleResponseSubmit = this.handleResponseSubmit.bind(this);
-  }
-
-  handlePromptSubmit(body) {
-    // TODO - POST new prompt to API
-    this.setState({conversations: this.state.conversations.concat(
-      {
-        id: uuidv1(),
-        prompt: body,
-        responses: [],
-      }
-    )});
-  }
-
-  handleResponseSubmit(body, parentConversation) {
-    // TODO - POST new post to API
-    let conversations =[...this.state.conversations]
-    for (let i = 0; i < conversations.length; i++) {
-      if (conversations[i].id === parentConversation.id) {
-        conversations[i].responses = conversations[i].responses.concat(body)
-        break
       }
     }
-    this.setState({conversations: conversations})
   }
+`;
 
-  render() {
-    let conversationList = this.state.conversations.map((conversation) =>
-      <li>
-        <Prompt body={conversation.prompt} />
-        <ul>
-          {conversation.responses.map((response) =>
-            <Post body={response}/>
-          )}
-        </ul>
-        <EssayForm title="response" conversation={conversation} handleSubmit={this.handleResponseSubmit}/>
-      </li>
-    );
-
-    return (
-      <div>
-        <EssayForm title="prompt" handleSubmit={this.handlePromptSubmit}/>
-        <hr/>
-        <ul>
-          {conversationList}
-        </ul>
-      </div>
-    );
+const ADD_RESPONSE = gql`
+mutation CreateDraftPost($title: String!, $userId: ID!, $promptId: ID!) {
+  createDraftPost(title: $title, userId: $userId, promptId: $promptId) {
+    id
+    title
+    published
+    author {
+      name
+    }
+    prompt {
+      id
+    }
   }
 }
+`;
 
-class EssayForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: ''
-    };
+function Conversations() {
+  const { loading, error, data } = useQuery(PUBLISHED_PROMPTS);
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
+  return data.publishedPrompts.map(({ id, title, posts }) => (
+    <div key={id}>
+      <Prompt body={title} />
+      <ul>
+        {posts.map((post) =>
+          <Post key={id} body={post.title} author={post.author}/>
+        )}
+      </ul>
+      <AddResponse promptId={id}/>
+    </div>
+  ));
+}
 
-  handleSubmit(e) {
-    e.preventDefault();
-    this.props.handleSubmit(this.state.value, this.props.conversation);
-  }
+function AddResponse(props) {
+  let input;
+  const [addResponse, { loading, error }] = useMutation(
+    ADD_RESPONSE,
+    {
+      update(cache, { data: { createDraftPost } }) {
+        const { publishedPrompts } = cache.readQuery({ query: PUBLISHED_PROMPTS });
+        let prompts = publishedPrompts.slice()
+        for (let i = 0; i < prompts.length; i++) {
+          if (prompts[i].id === createDraftPost.prompt.id) {
+            prompts[i].posts = prompts[i].posts.concat(createDraftPost)
+            cache.writeQuery({
+              query: PUBLISHED_PROMPTS,
+              data: { publishedPrompts: prompts },
+            });
+            break;
+          }
+        }
+      }
+    }
+  );
 
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Create a new {this.props.title}:
-          <textarea  onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error posting your response :(</p>;
+
+  return (
+    <div>
+      <form
+        onSubmit={e => {
+          e.preventDefault();
+          addResponse({ variables: { title: input.value, userId: "ck0ys8j6o000q078754rtp6lh", promptId: props.promptId } });
+          input.value = '';
+        }}
+      >
+        <input
+          ref={node => {
+            input = node;
+          }}
+        />
+        <button type="submit">Add Response</button>
       </form>
-    );
-  }
+    </div>
+  );
 }
 
 function Prompt(props) {
@@ -107,20 +112,23 @@ function Prompt(props) {
 
 function Post(props) {
   return (
-    <li key={props.body}>
+    <li key={props.key}>
       <img src="https://i.pravatar.cc/25" alt="Avatar" id="avatar"/>
+      <sub>{props.author.name}</sub>
       <span id="post-body">{props.body}</span>
     </li>
   )
 }
 
-function App() {
+function App(props) {
   return (
-    <div className="App">
-      <header className="App-header">
-      <Conversation />
-      </header>
-    </div>
+    <ApolloProvider client={client}>
+      <div className="App">
+        <header className="App-header">
+        <Conversations />
+        </header>
+      </div>
+    </ApolloProvider>
   );
 }
 

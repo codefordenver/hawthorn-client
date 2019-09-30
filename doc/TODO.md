@@ -1,0 +1,5 @@
+- [ ] Add new prompts
+- [ ] Add routing
+  - [ ] /prompts (get all prompts, titles only)
+  - [ ] /prompt (add new prompts)
+  - [ ] /prompt/{id} (conversation by prompt id)

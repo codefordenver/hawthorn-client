@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import uuidv1 from 'uuid/v1';
 
 class Conversation extends React.Component {
   constructor(props) {
@@ -7,8 +8,9 @@ class Conversation extends React.Component {
     this.state = {
       conversations: [
         {
+          id: uuidv1(),
           prompt: "Who are you?",
-          responses: ["I am Bert. Hello!", "Who wants to know?", "Pooh!"],
+          responses: ["I am Atti. Hello!", "Who wants to know?", "Pooh!"],
         }
       ],
     };
@@ -20,16 +22,23 @@ class Conversation extends React.Component {
     // TODO - POST new prompt to API
     this.setState({conversations: this.state.conversations.concat(
       {
+        id: uuidv1(),
         prompt: body,
         responses: [],
       }
     )});
   }
 
-  handleResponseSubmit(body) {
-    // TODO - Add the post to this.state.conversations for this conversation
+  handleResponseSubmit(body, parentConversation) {
     // TODO - POST new post to API
-    alert(body);
+    let conversations =[...this.state.conversations]
+    for (let i = 0; i < conversations.length; i++) {
+      if (conversations[i].id === parentConversation.id) {
+        conversations[i].responses = conversations[i].responses.concat(body)
+        break
+      }
+    }
+    this.setState({conversations: conversations})
   }
 
   render() {
@@ -41,7 +50,7 @@ class Conversation extends React.Component {
             <Post body={response}/>
           )}
         </ul>
-        <EssayForm title="response" handleSubmit={this.handleResponseSubmit}/>
+        <EssayForm title="response" conversation={conversation} handleSubmit={this.handleResponseSubmit}/>
       </li>
     );
 
@@ -74,7 +83,7 @@ class EssayForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.handleSubmit(this.state.value);
+    this.props.handleSubmit(this.state.value, this.props.conversation);
   }
 
   render() {

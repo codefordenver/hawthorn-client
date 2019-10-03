@@ -1,3 +1,10 @@
+- [ ] Update calls to hawthorn-server to reflect new API design
+- [ ] Register user flow
+- [ ] Login user flow
+- [ ] Create group
+- [ ] Join group
+- [ ] Publish prompt
+- [ ] Publish post
 - [ ] Add new prompts
 - [ ] Add routing
   - [ ] /prompts (get all prompts, titles only)

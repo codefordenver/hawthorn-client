@@ -1,4 +1,5 @@
-- [ ] Update calls to hawthorn-server to reflect new API design
+- [x] Update calls to hawthorn-server to reflect new API design
+- [ ] OAuth2 Authorization Grant Flow
 - [ ] Register user flow
 - [ ] Login user flow
 - [ ] Create group

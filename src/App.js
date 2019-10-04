@@ -17,7 +17,10 @@ const PUBLISHED_PROMPTS = gql`
         id
         title
         author {
-          name
+          id
+          email
+          firstName
+          lastName
         }
       }
     }
@@ -25,16 +28,20 @@ const PUBLISHED_PROMPTS = gql`
 `;
 
 const ADD_RESPONSE = gql`
-mutation CreateDraftPost($title: String!, $userId: ID!, $promptId: ID!) {
+mutation CreateDraftPost($title: String!, $userId: String!, $promptId: ID!) {
   createDraftPost(title: $title, userId: $userId, promptId: $promptId) {
     id
-    title
     published
+    title
+    authorId
     author {
-      name
+      id
+      firstName
+      lastName
     }
     prompt {
       id
+      title
     }
   }
 }
@@ -82,14 +89,14 @@ function AddResponse(props) {
   );
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error posting your response :(</p>;
+  if (error) return <p>Real bad error, but what is it?</p>;
 
   return (
     <div>
       <form
         onSubmit={e => {
           e.preventDefault();
-          addResponse({ variables: { title: input.value, userId: "ck0ys8j6o000q078754rtp6lh", promptId: props.promptId } });
+          addResponse({ variables: { title: input.value, userId: "5933d51f-f989-4c09-aac1-0406aa621510", promptId: props.promptId } });
           input.value = '';
         }}
       >
@@ -114,7 +121,7 @@ function Post(props) {
   return (
     <li key={props.key}>
       <img src="https://i.pravatar.cc/25" alt="Avatar" id="avatar"/>
-      <sub>{props.author.name}</sub>
+      <sub>{props.author.firstName} {props.author.lastName}</sub>
       <span id="post-body">{props.body}</span>
     </li>
   )

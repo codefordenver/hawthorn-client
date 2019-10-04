@@ -1,15 +1,23 @@
-- [x] Update calls to hawthorn-server to reflect new API design
+
+# TODOs:
 - [ ] OAuth2 Authorization Grant Flow
-- [ ] Pull components out to `src/components`
-- [ ] Register user flow
-- [ ] Login user flow
+  - [ ] Register user
+  - [ ] Login user
+  - [ ] Store session
+- [ ] Site design
+- [ ] Authorization
+  - [ ] Authorized endpoint / resource example
+- [ ] Publish post
+- [ ] Display published posts only
+- [ ] Add new prompts
+- [ ] Publish prompt
+- [ ] Use consistent style - semicolons or not? what else is important in JS world? - Research linting
+- [ ] Convert to typescript
 - [ ] Create group
 - [ ] Join group
-- [ ] Publish prompt
-- [ ] Publish post
-- [ ] Add new prompts
-- [ ] Add routing
-  - [x] Add react-router
-  - [ ] /prompts (get all prompts, titles only)
-  - [ ] /prompt (add new prompts)
-  - [ ] /prompt/{id} (conversation by prompt id)
+
+# DONEs:
+- [x] Update calls to hawthorn-server to reflect new API design
+- [x] Add routing
+  - [x] Add react-router  
+- [x] Pull components out to `src/components`

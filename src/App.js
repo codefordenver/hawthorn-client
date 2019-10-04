@@ -3,6 +3,15 @@ import './App.css';
 import ApolloClient from 'apollo-boost';
 import { gql } from 'apollo-boost';
 import { ApolloProvider, useQuery, useMutation } from '@apollo/react-hooks';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+function About() {
+  return <h2>About</h2>;
+}
+
+function Users() {
+  return <h2>Users</h2>;
+}
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000'
@@ -127,15 +136,48 @@ function Post(props) {
   )
 }
 
+function Navbar(props) {
+  return (
+    <nav>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
+        <li>
+          <Link to="/users">Users</Link>
+        </li>
+      </ul>
+    </nav>
+  );
+}
+
+function Routes(props) {
+  return (
+    <div>
+      <Navbar />
+      <Switch>
+        <Route exact path="/" component={Conversations} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/users" component={Users} />
+      </Switch>
+    </div>
+  );
+}
+
 function App(props) {
   return (
-    <ApolloProvider client={client}>
-      <div className="App">
-        <header className="App-header">
-        <Conversations />
-        </header>
-      </div>
-    </ApolloProvider>
+    <Router>
+      <ApolloProvider client={client}>
+        <div className="App">
+          <header className="App-header">
+            <Routes />
+          </header>
+        </div>
+      </ApolloProvider>
+    </Router>
   );
 }
 

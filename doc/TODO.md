@@ -1,5 +1,6 @@
 - [x] Update calls to hawthorn-server to reflect new API design
 - [ ] OAuth2 Authorization Grant Flow
+- [ ] Pull components out to `src/components`
 - [ ] Register user flow
 - [ ] Login user flow
 - [ ] Create group
@@ -8,6 +9,7 @@
 - [ ] Publish post
 - [ ] Add new prompts
 - [ ] Add routing
+  - [x] Add react-router
   - [ ] /prompts (get all prompts, titles only)
   - [ ] /prompt (add new prompts)
   - [ ] /prompt/{id} (conversation by prompt id)

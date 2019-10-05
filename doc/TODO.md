@@ -5,6 +5,9 @@
   - [ ] Login user
   - [ ] Store session
 - [ ] Site design
+- [ ] Tests
+- [ ] Automated Build
+- [ ] Initial deploy
 - [ ] Authorization
   - [ ] Authorized endpoint / resource example
 - [ ] Publish post

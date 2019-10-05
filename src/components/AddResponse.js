@@ -1,5 +1,4 @@
 import React from 'react';
-import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_RESPONSE, PUBLISHED_PROMPTS } from '../services/graphql/queries';
 

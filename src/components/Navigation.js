@@ -1,5 +1,6 @@
-import React from 'react';
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { auth } from '../services/auth'
 
 export const Navigation = () => {
   return (
@@ -13,6 +14,9 @@ export const Navigation = () => {
         </li>
         <li>
           <Link to="/users">Users</Link>
+        </li>
+        <li>
+          <a href={auth.authorizeUri()}>Login</a>
         </li>
       </ul>
     </nav>

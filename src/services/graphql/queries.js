@@ -1,5 +1,6 @@
 import { gql } from 'apollo-boost';
 
+// Queries
 export const PUBLISHED_PROMPTS = gql`
   query {
     publishedPrompts {
@@ -19,6 +20,7 @@ export const PUBLISHED_PROMPTS = gql`
   }
 `;
 
+// Mutations
 export const ADD_RESPONSE = gql`
 mutation CreateDraftPost($title: String!, $userId: String!, $promptId: ID!) {
   createDraftPost(title: $title, userId: $userId, promptId: $promptId) {
@@ -35,6 +37,15 @@ mutation CreateDraftPost($title: String!, $userId: String!, $promptId: ID!) {
       id
       title
     }
+  }
+}
+`;
+
+export const LOGIN = gql`
+query Login($code: String!) {
+  login(code: $code) {
+    accessToken
+    userId
   }
 }
 `;

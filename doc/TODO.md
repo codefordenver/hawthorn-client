@@ -1,8 +1,7 @@
 
 # TODOs:
 ## PHASE 1
-- [ ] Login moves /oauth2/authorization call to service
-  - call hawthorn-server/login
+- [ ] Handle unauthorized requests
 - [ ] logout
 - [ ] clean up dependencies
 - [ ] Initial deploy
@@ -19,6 +18,7 @@
 - [ ] Create group
 - [ ] Join group
 ## DONEs:
+- [x] Receive and pass back JWT / Refresh token cookie
 - [x] Publish post
 - [x] Authorization
   - [x] Authorized endpoint / resource example

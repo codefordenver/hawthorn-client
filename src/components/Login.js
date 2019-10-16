@@ -20,12 +20,13 @@ export const Login = (props) => {
       <h2>Error :( {JSON.stringify(error)}</h2>
     )
   }
-  if (data.login.accessToken !== null) {
-    localStorage.setItem('token', data.login.accessToken)
-  }
 
   return (
     <div>
+      <h2>Hi {data.login.username}</h2>
+      <p>name: {data.login.firstName} {data.login.lastName}</p>
+      <p>email: {data.login.email}</p>
+      <p>username: {data.login.username}</p>
     </div>
   );
 };

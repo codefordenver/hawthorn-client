@@ -44,8 +44,11 @@ mutation CreateDraftPost($title: String!, $userId: String!, $promptId: ID!) {
 export const LOGIN = gql`
 query Login($code: String!) {
   login(code: $code) {
-    accessToken
-    userId
+    id
+    email
+    username
+    firstName
+    lastName
   }
 }
 `;

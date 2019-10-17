@@ -10,13 +10,13 @@ export const Navigation = () => {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/about">About</Link>
-        </li>
-        <li>
-          <Link to="/users">Users</Link>
+          <Link to="/conversations">Conversations</Link>
         </li>
         <li>
           <a href={auth.authorizeUri()}>Login</a>
+        </li>
+        <li>
+          <Link to="/logout">Logout</Link>
         </li>
       </ul>
     </nav>

@@ -2,7 +2,10 @@
 # TODOs:
 ## PHASE 1
 - [ ] Handle unauthorized requests
-- [ ] logout
+  - [ ] Redirect to login on unauthorized
+- [ ] Show navs for authorized pages only
+  - [ ] Show /login nav when not logged in
+  - [ ] Show /logout nav when logged in
 - [ ] clean up dependencies
 - [ ] Initial deploy
 ## PHASE 2
@@ -18,6 +21,7 @@
 - [ ] Create group
 - [ ] Join group
 ## DONEs:
+- [x] logout
 - [x] Receive and pass back JWT / Refresh token cookie
 - [x] Publish post
 - [x] Authorization

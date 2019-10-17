@@ -3,13 +3,15 @@ import './App.css';
 import { ApolloClient } from 'apollo-client';
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import { setContext } from 'apollo-link-context';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { Routes } from './components/Routes';
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:4000',
-  credentials: 'include'
+  credentials: 'include',
+  fetchOptions: {
+    redirect: 'follow'
+  }
 });
 
 const client = new ApolloClient({

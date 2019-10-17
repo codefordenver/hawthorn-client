@@ -1,6 +1,24 @@
 import { gql } from 'apollo-boost';
 
 // Queries
+export const LOGIN = gql`
+query Login($code: String!) {
+  login(code: $code) {
+    id
+    email
+    username
+    firstName
+    lastName
+  }
+}
+`;
+
+export const LOGOUT = gql`
+query {
+  logout
+}
+`;
+
 export const PUBLISHED_PROMPTS = gql`
   query {
     publishedPrompts {
@@ -37,18 +55,6 @@ mutation CreateDraftPost($title: String!, $userId: String!, $promptId: ID!) {
       id
       title
     }
-  }
-}
-`;
-
-export const LOGIN = gql`
-query Login($code: String!) {
-  login(code: $code) {
-    id
-    email
-    username
-    firstName
-    lastName
   }
 }
 `;

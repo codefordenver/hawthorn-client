@@ -1,8 +1,10 @@
 
 # TODOs:
 ## PHASE 1
-- [ ] Handle unauthorized requests
-  - [ ] Redirect to login on unauthorized
+- [ ] Error handling
+  - [ ] Handle unauthorized requests
+    - [ ] Redirect to login on unauthorized
+  - [ ] Failure to get FusionAuth config
 - [ ] Show navs for authorized pages only
   - [ ] Show /login nav when not logged in
   - [ ] Show /logout nav when logged in

@@ -16,7 +16,9 @@ const httpLink = createHttpLink({
 
 const client = new ApolloClient({
   link: httpLink,
-  ssrMode: !process.browser, // Disables forceFetch on the server (so queries are only run once)
+  // Disables forceFetch on the server (so queries are only run once)
+  // TODO - is this needed?
+  ssrMode: !process.browser,
   cache: new InMemoryCache()
 });
 

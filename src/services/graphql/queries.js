@@ -1,6 +1,17 @@
 import { gql } from 'apollo-boost';
 
 // Queries
+export const FUSIONAUTH_CONFIG = gql`
+query {
+  fusionAuthConfig{
+      endpoint
+      clientId
+      tenantId
+      redirectUri
+  }
+}
+`;
+
 export const LOGIN = gql`
 query Login($code: String!) {
   login(code: $code) {

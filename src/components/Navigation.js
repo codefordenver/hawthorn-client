@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { auth } from '../services/auth'
 
 export const Navigation = () => {
   return (
@@ -13,7 +12,7 @@ export const Navigation = () => {
           <Link to="/conversations">Conversations</Link>
         </li>
         <li>
-          <a href={auth.authorizeUri()}>Login</a>
+          <Link to="/login/init">Login</Link>
         </li>
         <li>
           <Link to="/logout">Logout</Link>

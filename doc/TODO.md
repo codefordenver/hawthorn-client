@@ -1,6 +1,13 @@
 
 # TODOs:
 ## PHASE 1
+- [ ] Implement wireframe in components
+  - [ ] One prompt per page
+  - [ ] Display prompt as head of page
+  - [ ] Form to submit a response, below prompt
+    - [ ] Show active user's avatar next to input form
+    - [ ] List responses to the prompt below Form
+    - [ ] Active user's response to prompt always displayed first in list of responses
 - [ ] Error handling
   - [ ] Handle unauthorized requests
     - [ ] Redirect to login on unauthorized

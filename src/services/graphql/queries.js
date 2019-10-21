@@ -16,10 +16,7 @@ export const LOGIN = gql`
 query Login($code: String!) {
   login(code: $code) {
     id
-    email
-    username
-    firstName
-    lastName
+    imageUrl
   }
 }
 `;
@@ -40,9 +37,7 @@ export const PUBLISHED_PROMPTS = gql`
         title
         author {
           id
-          email
-          firstName
-          lastName
+          imageUrl
         }
       }
     }
@@ -59,8 +54,6 @@ mutation CreateDraftPost($title: String!, $userId: String!, $promptId: ID!) {
     authorId
     author {
       id
-      firstName
-      lastName
     }
     prompt {
       id

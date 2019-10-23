@@ -47,7 +47,6 @@ export const CREATE_POST = gql`
 mutation CreatePost($title: String!, $promptId: ID!) {
   createPost(title: $title, promptId: $promptId) {
     id
-    published
     title
     author {
       imageUrl

@@ -18,6 +18,8 @@
 - [ ] clean up dependencies
 - [ ] Initial deploy
 ## PHASE 2
+- [ ] UI to add Prompts
+  - what role can add Prompt?
 - [ ] Get prettier working, already npm installed
 - [ ] Site design
 - [ ] Tests

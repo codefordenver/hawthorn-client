@@ -15,7 +15,6 @@ query {
 export const LOGIN = gql`
 query Login($code: String!) {
   login(code: $code) {
-    id
     imageUrl
   }
 }
@@ -36,7 +35,6 @@ export const PUBLISHED_PROMPTS = gql`
         id
         title
         author {
-          id
           imageUrl
         }
       }
@@ -45,19 +43,17 @@ export const PUBLISHED_PROMPTS = gql`
 `;
 
 // Mutations
-export const ADD_RESPONSE = gql`
-mutation CreateDraftPost($title: String!, $userId: String!, $promptId: ID!) {
-  createDraftPost(title: $title, userId: $userId, promptId: $promptId) {
+export const CREATE_POST = gql`
+mutation CreatePost($title: String!, $promptId: ID!) {
+  createPost(title: $title, promptId: $promptId) {
     id
     published
     title
-    authorId
     author {
-      id
+      imageUrl
     }
     prompt {
       id
-      title
     }
   }
 }

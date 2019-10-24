@@ -6,15 +6,21 @@ import { Logout } from './Logout';
 import { Conversations } from './Conversations';
 import { useQuery } from '@apollo/react-hooks';
 import { FUSIONAUTH_CONFIG } from '../services/graphql/queries'
+import { errorHandler } from '../services/graphql/errorHandler'
 
 export const Routes = (props) => {
   // Setup configuration here since this is the highest-level component with access to ApolloClient
-  const { loading, error, data } = useQuery(FUSIONAUTH_CONFIG);
+  const { loading, error, data } = useQuery(FUSIONAUTH_CONFIG,
+  {
+    onError(error) {
+       errorHandler(error, props.history)
+    }
+  })
 
   if (loading) {
     return <p>Loading</p>
   } else if (error) {
-    return <p>Error</p>
+    return <p>An unexpected error occurred, please come back later</p>
   }
 
   const configuration = {

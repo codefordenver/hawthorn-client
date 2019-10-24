@@ -8,16 +8,15 @@
     - [ ] Show active user's avatar next to input form
     - [ ] List responses to the prompt below Form
     - [ ] Active user's response to prompt always displayed first in list of responses
-- [ ] Error handling
-  - [ ] Handle unauthorized requests
-    - [ ] Redirect to login on unauthorized
-  - [ ] Failure to get FusionAuth config
 - [ ] Show navs for authorized pages only
   - [ ] Show /login nav when not logged in
   - [ ] Show /logout nav when logged in
 - [ ] clean up dependencies
 - [ ] Initial deploy
 ## PHASE 2
+- [ ] Error handling
+  - [ ] Handle graphQL networkError
+  - [ ] Handle unknown graphQL errors
 - [ ] UI to add Prompts
   - what role can add Prompt?
 - [ ] Get prettier working, already npm installed
@@ -32,6 +31,10 @@
 - [ ] Create group
 - [ ] Join group
 ## DONEs:
+- [x] Error handling
+  - [x] Handle unauthorized requests
+    - [x] Redirect to login on unauthorized
+  - [x] Failure to get FusionAuth config
 - [x] logout
 - [x] Receive and pass back JWT / Refresh token cookie
 - [x] Publish post

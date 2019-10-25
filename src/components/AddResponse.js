@@ -12,7 +12,7 @@ export const AddResponse = (props) => {
         let prompts = publishedPrompts.slice()
         for (let i = 0; i < prompts.length; i++) {
           if (prompts[i].id === createPost.prompt.id) {
-            prompts[i].posts = prompts[i].posts.concat(createPost)
+            prompts[i].posts = [createPost].concat(prompts[i].posts)
             cache.writeQuery({
               query: PUBLISHED_PROMPTS,
               data: { publishedPrompts: prompts },

@@ -1,36 +1,35 @@
 
 # TODOs:
 ## PHASE 1
-- [ ] Implement wireframe in components
-  - [ ] One prompt per page
-  - [ ] Display prompt as head of page
-  - [ ] Form to submit a response, below prompt
-    - [ ] Show active user's avatar next to input form
-    - [ ] List responses to the prompt below Form
-    - [ ] Active user's response to prompt always displayed first in list of responses
-- [ ] Show navs for authorized pages only
-  - [ ] Show /login nav when not logged in
-  - [ ] Show /logout nav when logged in
+- [ ] Style interface
 - [ ] clean up dependencies
 - [ ] Initial deploy
 ## PHASE 2
+- [ ] Show navs for authorized pages only
+  - [ ] Show /login nav when not logged in
+  - [ ] Show /logout nav when logged in
 - [ ] Error handling
   - [ ] Handle graphQL networkError
   - [ ] Handle unknown graphQL errors
-- [ ] UI to add Prompts
-  - what role can add Prompt?
 - [ ] Get prettier working, already npm installed
 - [ ] Site design
 - [ ] Tests
 - [ ] Automated Build
 - [ ] Display published posts only
-- [ ] Add new prompts
-- [ ] Publish prompt
 - [ ] Use consistent style - semicolons or not? what else is important in JS world? - Research linting
 - [ ] Convert to typescript
 - [ ] Create group
 - [ ] Join group
 ## DONEs:
+- [x] UI to add Prompts
+  - what role can add Prompt?
+- [x] Add new prompts
+- [x] Publish prompt
+- [x] Implement wireframe in components
+  - [x] One prompt per page
+  - [x] Display prompt as head of page
+  - [x] Form to submit a response, below prompt
+    - [x] List responses to the prompt below Form
 - [x] Error handling
   - [x] Handle unauthorized requests
     - [x] Redirect to login on unauthorized

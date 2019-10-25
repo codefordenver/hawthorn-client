@@ -7,12 +7,12 @@ export const Conversation = (props) => {
   return (
     <div id={props.id}>
       <Prompt body={props.title} />
+      <AddResponse promptId={props.id} />
       <ul>
         {props.posts.map((post) =>
-          <Post key={post.id} body={post.title} author={post.author}/>
+          <Post key={post.id} body={post.title} />
         )}
       </ul>
-      <AddResponse promptId={props.id}/>
     </div>
   )
 };

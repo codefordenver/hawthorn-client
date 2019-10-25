@@ -33,11 +33,7 @@ export const PUBLISHED_PROMPTS = gql`
       title
       posts {
         id
-        title
-        author {
-          imageUrl
-        }
-      }
+        title      }
     }
   }
 `;
@@ -48,12 +44,18 @@ mutation CreatePost($title: String!, $promptId: ID!) {
   createPost(title: $title, promptId: $promptId) {
     id
     title
-    author {
-      imageUrl
-    }
     prompt {
       id
     }
+  }
+}
+`;
+
+export const CREATE_PROMPT = gql`
+mutation CreatePrompt($title: String!) {
+  createPrompt(title: $title) {
+    id
+    title
   }
 }
 `;

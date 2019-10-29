@@ -5,9 +5,10 @@ import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { Routes } from './components/Routes';
+import { configuration } from './configuration/configuration'
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000',
+  uri: configuration.graphqlServer.endpoint,
   credentials: 'include',
   fetchOptions: {
     redirect: 'follow'

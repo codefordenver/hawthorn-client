@@ -18,15 +18,26 @@ export const Conversations = (props) => {
 
   if (error) return <p>Error :(</p>;
 
-  return (
-    <div>
-      <button onClick={() => {if (promptIndex > 0) setPromptIndex(promptIndex - 1)}}>
-        Previous
-      </button>
-      <Conversation id={data.publishedPrompts[promptIndex].id} title={data.publishedPrompts[promptIndex].title} posts={data.publishedPrompts[promptIndex].posts} />
-      <button onClick={() => {if (promptIndex < data.publishedPrompts.length - 1) setPromptIndex(promptIndex + 1)}}>
-        Next
-      </button>
-    </div>
-  );
+  if (data.publishedPrompts.length > 0) {
+    return (
+      <div>
+        <h1>welcome.</h1>
+
+        <button onClick={() => {if (promptIndex > 0) setPromptIndex(promptIndex - 1)}}>
+          Previous
+        </button>
+        <Conversation id={data.publishedPrompts[promptIndex].id} title={data.publishedPrompts[promptIndex].title} posts={data.publishedPrompts[promptIndex].posts} />
+        <button onClick={() => {if (promptIndex < data.publishedPrompts.length - 1) setPromptIndex(promptIndex + 1)}}>
+          Next
+        </button>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <h1>welcome.</h1>
+        <p>there is nothing to see here yet. please come back later</p>
+      </div>
+    )
+  }
 };

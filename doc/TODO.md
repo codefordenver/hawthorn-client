@@ -1,4 +1,5 @@
 ## Bugs
+- [ ] Carriage returns not being preserved in posts
 # TODOs:
 ## PHASE 1
 - [ ] App logo to header

@@ -20,16 +20,22 @@ export const Conversations = (props) => {
 
   if (data.publishedPrompts.length > 0) {
     return (
-      <div>
-        <h1>welcome.</h1>
-
-        <button onClick={() => {if (promptIndex > 0) setPromptIndex(promptIndex - 1)}}>
-          Previous
-        </button>
-        <Conversation id={data.publishedPrompts[promptIndex].id} title={data.publishedPrompts[promptIndex].title} posts={data.publishedPrompts[promptIndex].posts} />
-        <button onClick={() => {if (promptIndex < data.publishedPrompts.length - 1) setPromptIndex(promptIndex + 1)}}>
-          Next
-        </button>
+      <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <div class="row">
+          <div class="col">
+            <button type="button" class={"btn btn-outline-primary rounded-circle" + (promptIndex === 0 ? ' d-none' : '')} onClick={() => {if (promptIndex > 0) setPromptIndex(promptIndex - 1)}}>
+              &lt;
+            </button>
+          </div>
+          <div class="col-9">
+            <Conversation id={data.publishedPrompts[promptIndex].id} title={data.publishedPrompts[promptIndex].title} posts={data.publishedPrompts[promptIndex].posts} />
+          </div>
+          <div class="col">
+            <button type="button" class={"btn btn-outline-primary rounded-circle" + (promptIndex + 1 === data.publishedPrompts.length ? ' d-none' : '')} onClick={() => {if (promptIndex < data.publishedPrompts.length - 1) setPromptIndex(promptIndex + 1)}}>
+              &gt;
+            </button>
+          </div>
+        </div>
       </div>
     );
   } else {

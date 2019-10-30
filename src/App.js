@@ -26,11 +26,7 @@ const client = new ApolloClient({
 function App(props) {
   return (
     <ApolloProvider client={client}>
-      <div className="App">
-        <header className="App-header">
-          <Routes />
-        </header>
-      </div>
+      <Routes />
     </ApolloProvider>
   );
 }

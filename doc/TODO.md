@@ -1,10 +1,10 @@
 ## Bugs
 # TODOs:
 ## PHASE 1
-- [ ] Style interface
+- [ ] App logo to header
 - [ ] clean up dependencies
-- [ ] Show prev/next navs only when there are prev/next prompts
 ## PHASE 2
+- [ ] Swap favicon
 - [ ] Show navs for authorized pages only
   - [ ] Show /login nav when not logged in
   - [ ] Show /logout nav when logged in
@@ -21,6 +21,8 @@
 - [ ] Create group
 - [ ] Join group
 ## DONEs:
+- [x] Show prev/next navs only when there are prev/next prompts
+- [x] Style interface
 - [x] Make graphql server endpoint configurable
 - [x] Infinite redirect on /logout
 - [x] Error thrown on root URL if no published prompts returned from query

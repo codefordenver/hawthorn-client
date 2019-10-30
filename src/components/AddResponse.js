@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { CREATE_POST, PUBLISHED_PROMPTS } from '../services/graphql/queries';
 
 export const AddResponse = (props) => {
+  const [showResponseForm, setShowResponseForm] = useState(false)
+
   let input;
   const [createPost, { loading, error }] = useMutation(
     CREATE_POST,
@@ -27,22 +29,35 @@ export const AddResponse = (props) => {
   if (loading) return <p>Loading...</p>
   if (error) return <p>I'm so very sorry, a real bad error occured while adding your response</p>
 
+  let responseForm
+  if (showResponseForm) {
+    responseForm = <form
+                    onSubmit={e => {
+                      e.preventDefault()
+                      if (input.value) {
+                        createPost({ variables: { title: input.value, promptId: props.promptId } })
+                      }
+                      input.value = ''
+                      setShowResponseForm(!showResponseForm)
+                    }}>
+                    <div class="form-group">
+                      <textarea class="form-control" rows="3" ref={node => {
+                          input = node
+                        }}
+                      />
+                    </div>
+                    <button type="submit" class="btn btn-primary">submit</button>
+                  </form>
+  } else {
+    responseForm = <button
+                      type="button"
+                      class="btn btn-link"
+                      onClick={() => setShowResponseForm(!showResponseForm)}>share your response</button>
+  }
+
   return (
-    <div>
-      <form
-        onSubmit={e => {
-          e.preventDefault();
-          createPost({ variables: { title: input.value, promptId: props.promptId } });
-          input.value = '';
-        }}
-      >
-        <input
-          ref={node => {
-            input = node;
-          }}
-        />
-        <button type="submit">Add Response</button>
-      </form>
+    <div class="m-3">
+      {responseForm}
     </div>
   );
 };

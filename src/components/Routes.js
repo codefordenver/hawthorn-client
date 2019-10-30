@@ -30,7 +30,15 @@ export const Routes = (props) => {
   const logoutUri = `${configuration.fusionAuth.endpoint}/oauth2/logout?client_id=${configuration.fusionAuth.clientId}&tenantId=${configuration.fusionAuth.tenantId}`
 
   return (
-    <div>
+    <main role="main" class="container">
+      {/* App logo header */}
+      <div class="d-flex align-items-center p-3 my-3 text-white-50 rounded shadow-sm bg-blue">
+        <div class="lh-100">
+          <h1 class="mb-0 text-white lh-100">hawthorn.</h1>
+          <small>healing folks healing folks</small>
+        </div>
+      </div>
+
       <Switch>
         <Route exact path="/" component={Conversations} />
         <Route exact path="/admin/prompt" component={AddPrompt} />
@@ -49,6 +57,6 @@ export const Routes = (props) => {
           }
         }/>
       </Switch>
-    </div>
+    </main>
   );
 };

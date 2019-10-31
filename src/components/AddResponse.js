@@ -56,7 +56,7 @@ export const AddResponse = (props) => {
   }
 
   return (
-    <div class="m-3">
+    <div class="mx-0 mb-3">
       {responseForm}
     </div>
   );

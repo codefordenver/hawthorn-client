@@ -1,2 +1,14 @@
-/* Colors */
-.bg-blue { background-color: rgba(  0, 49,161,1) }
+:root {
+  /* Colors */
+  --color-sky: #286DA8;
+  --color-peach: #CD5360;
+  --color-field: #B37D4E;
+  --color-breeze: #438496;
+}
+
+.bg-sky { background-color: var(--color-sky); }
+.border-peach { border-color: var(--color-peach); }
+.color-peach { color: var(--color-peach); }
+.color-field { color: var(--color-field); }
+/* Render whitespace */
+.post-body { white-space: pre-wrap; }

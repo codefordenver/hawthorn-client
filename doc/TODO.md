@@ -1,13 +1,10 @@
 ## Bugs
-- [ ] Carriage returns not being preserved in posts
 # TODOs:
 ## PHASE 1
-- [ ] Make layout less squeezed on mobile
-  - [ ] Easier to locate Prompt navigation buttons
 - [ ] App logo to header
 - [ ] clean up dependencies
 - [ ] Proxy application request through nginx or apache
-- [ ] Custom domain 
+- [ ] Custom domain
 ## PHASE 2
 - [ ] HTTPS
 - [ ] Handle server connection failure gracefully
@@ -29,6 +26,9 @@
 - [ ] Create group
 - [ ] Join group
 ## DONEs:
+- [x] Make layout less squeezed on mobile
+  - [x] Easier to locate Prompt navigation buttons
+- [x] Carriage returns not being preserved in posts
 - [x] Show prev/next navs only when there are prev/next prompts
 - [x] Style interface
 - [x] Make graphql server endpoint configurable

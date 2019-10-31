@@ -4,6 +4,7 @@ import { AddPrompt } from './AddPrompt';
 import { Conversations } from './Conversations';
 import { LoginWithRouter as Login } from './Login';
 import { Logout } from './Logout';
+import { Header } from './Header';
 import { useQuery } from '@apollo/react-hooks';
 import { FUSIONAUTH_CONFIG } from '../services/graphql/queries'
 import { errorHandler } from '../services/graphql/errorHandler'
@@ -31,14 +32,7 @@ export const Routes = (props) => {
 
   return (
     <main role="main" class="container">
-      {/* App logo header */}
-      <div class="d-flex align-items-center p-3 my-3 text-white-50 rounded shadow-sm bg-blue">
-        <div class="lh-100">
-          <h1 class="mb-0 text-white lh-100">hawthorn.</h1>
-          <small>healing folks healing folks</small>
-        </div>
-      </div>
-
+      <Header />
       <Switch>
         <Route exact path="/" component={Conversations} />
         <Route exact path="/admin/prompt" component={AddPrompt} />

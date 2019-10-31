@@ -2,9 +2,16 @@
 - [ ] Carriage returns not being preserved in posts
 # TODOs:
 ## PHASE 1
+- [ ] Make layout less squeezed on mobile
+  - [ ] Easier to locate Prompt navigation buttons
 - [ ] App logo to header
 - [ ] clean up dependencies
+- [ ] Proxy application request through nginx or apache
+- [ ] Custom domain 
 ## PHASE 2
+- [ ] HTTPS
+- [ ] Handle server connection failure gracefully
+  - App does not render anything if it cannot communicate with the backend
 - [ ] Swap favicon
 - [ ] Show navs for authorized pages only
   - [ ] Show /login nav when not logged in

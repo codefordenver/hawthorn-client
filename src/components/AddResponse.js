@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
+import { errorHandler } from '../services/graphql/errorHandler'
 import { CREATE_POST, PUBLISHED_PROMPTS } from '../services/graphql/queries';
 
 export const AddResponse = (props) => {
@@ -9,6 +10,9 @@ export const AddResponse = (props) => {
   const [createPost, { loading, error }] = useMutation(
     CREATE_POST,
     {
+      onError(error) {
+         errorHandler(error, props.history)
+      },
       update(cache, { data: { createPost } }) {
         const { publishedPrompts } = cache.readQuery({ query: PUBLISHED_PROMPTS });
         let prompts = publishedPrompts.slice()

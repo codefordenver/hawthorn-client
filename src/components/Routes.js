@@ -35,7 +35,7 @@ export const Routes = (props) => {
       <Header />
       <Switch>
         <Route exact path="/" component={Conversations} />
-        <Route exact path="/admin/prompt" component={AddPrompt} />
+        <Route exact path="/prompt" component={AddPrompt} />
         {/* OAuth2 authorization grant requires redirect to authorization server */}
         <Route exact path="/login" component={Login} />
         <Route exact path="/login/init" component={() => {

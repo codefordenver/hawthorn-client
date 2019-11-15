@@ -5,6 +5,7 @@
 - [ ] Publish only publishable Prompts and Posts
   - [ ] Unpublish abusive posts
     - admin role restriction
+- [ ] Add an About / What is this? page
 - [ ] Tests
 - [ ] Automated Build
 - [ ] Versioning

@@ -1,9 +1,18 @@
 ## Feature requests (sourced from users)
-- [ ] User can respond to comments
-- [ ] Conversations organized by category (mental health, relationships, etc)
-- [ ] Private groups
-  - [ ] Invite friend(s) to group
 - [ ] Make avatar stick to response
+- [ ] User can respond to comments
+- [ ] Private groups / conversations
+  - [ ] Invite friend(s) to group
+  - This feature will require people to create accounts
+    - Minimum amount of data required from end user is a username and password
+    - Can optionally take email address if the user wants password resets
+    - The User owns the data. If they delete their account, all of their Posts content should be deleted.  
+      - What about Prompts they have issued to the Group?
+- [ ] Prompt and Post moderation
+  - [ ] Group name moderation
+  - [ ] Moderation of a Group's Users
+  - Maintain a safe environment
+- [ ] Conversations organized by category (mental health, relationships, etc)
 - [ ] Allow user to read other people's Responses only if they have first posted a Response to that Prompt
 ## DONEs:
 - [x] All users can add prompts

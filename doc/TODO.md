@@ -1,34 +1,33 @@
-## Bugs
+# Bugs
+
 # TODOs:
-## PHASE 1
-- [ ] App logo to header
 - [ ] clean up dependencies
-- [ ] Proxy application request through nginx or apache
-- [ ] Custom domain
-## PHASE 2
+- [ ] Publish only publishable Prompts and Posts
+  - [ ] Unpublish abusive posts
+    - admin role restriction
+- [ ] Tests
+- [ ] Automated Build
 - [ ] Versioning
   - [ ] Release notes
     - [ ] Static Page hosted on site
 - [ ] HTTPS
-- [ ] Handle server connection failure gracefully
-  - App does not render anything if it cannot communicate with the backend
-- [ ] Swap favicon
-- [ ] Show navs for authorized pages only
-  - [ ] Show /login nav when not logged in
-  - [ ] Show /logout nav when logged in
-- [ ] Error handling
-  - [ ] Handle graphQL networkError
-  - [ ] Handle unknown graphQL errors
-- [ ] Get prettier working, already npm installed
-- [ ] Site design
-- [ ] Tests
-- [ ] Automated Build
-- [ ] Display published posts only
 - [ ] Use consistent style - semicolons or not? what else is important in JS world? - Research linting
 - [ ] Convert to typescript
-- [ ] Create group
-- [ ] Join group
+- [ ] Handle server connection failure gracefully
+  - App does not render anything if it cannot communicate with the backend
+- [ ] Error handling
+  - Is this done?
+  - [ ] Handle graphQL networkError
+  - [ ] Handle unknown graphQL errors
+- [ ] Get prettier working
+
+- Design
+- [ ] Create an app logo for header and favicon
+- [ ] Full site design
+
 ## DONEs:
+- [x] Proxy application request through nginx or apache
+- [x] Custom domain
 - [x] Carriage returns not being preserved in posts
 - [x] Show prev/next navs only when there are prev/next prompts
 - [x] Style interface

@@ -1,7 +1,6 @@
 # Bugs
 
 # TODOs:
-- [ ] clean up dependencies
 - [ ] Publish only publishable Prompts and Posts
   - [ ] Unpublish abusive posts
     - admin role restriction
@@ -27,6 +26,7 @@
 - [ ] Full site design
 
 ## DONEs:
+- [x] clean up dependencies
 - [x] Proxy application request through nginx or apache
 - [x] Custom domain
 - [x] Carriage returns not being preserved in posts

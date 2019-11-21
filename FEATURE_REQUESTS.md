@@ -1,4 +1,8 @@
 ## Feature requests (sourced from users)
+- [ ] Moderate abusive (hateful, harmful) content
+  - [ ] Phase 1 - Moderator manually publishes all Prompts and Posts as they are submitted
+  - [ ] Phase 2 - Content filtered by algorithm, and published automatically or reviewed by moderator when flagged as potentially abusive
+  - [ ] Phase 3 - Supportive intervention extended to abusive user when content is flagged as abusive
 - [ ] Make avatar stick to response
 - [ ] User can respond to comments
 - [ ] Private groups / conversations

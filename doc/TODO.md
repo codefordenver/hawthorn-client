@@ -1,10 +1,15 @@
 # Bugs
 
 # TODOs:
-- [ ] Publish only publishable Prompts and Posts
-  - [ ] Unpublish abusive posts
-    - admin role restriction
+- [ ] Moderation Phase 1
+  - [x] Publish only publishable Prompts and Posts
+  - [x] Create Prompts and Posts as unpublished
+  - [ ] Authenticated user with moderator role can publish Posts and Prompts
+    - [ ] View, approve, and deny unpublished content
+    - [ ] Notify moderators when unpublished content is created
+  - [ ] Notify user upon posting that their content is being manually reviewed
 - [ ] Add an About / What is this? page
+- [ ] Add contributors page
 - [ ] Tests
 - [ ] Automated Build
 - [ ] Versioning

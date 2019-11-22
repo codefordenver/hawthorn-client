@@ -1,4 +1,6 @@
 # Bugs
+- [ ] "index.js:1375 Warning: Invalid DOM property `class`. Did you mean `className`?
+    in h1 (at Header.js:8)"
 
 # TODOs:
 - [ ] Moderation Phase 1

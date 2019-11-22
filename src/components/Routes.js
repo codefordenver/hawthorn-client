@@ -4,6 +4,7 @@ import { AddPrompt } from './AddPrompt';
 import { Conversations } from './Conversations';
 import { LoginWithRouter as Login } from './Login';
 import { Logout } from './Logout';
+import { ModerateContent } from './ModerateContent';
 import { Header } from './Header';
 import { useQuery } from '@apollo/react-hooks';
 import { FUSIONAUTH_CONFIG } from '../services/graphql/queries'
@@ -50,6 +51,7 @@ export const Routes = (props) => {
             return null
           }
         }/>
+        <Route exact path="/moderate" component={ModerateContent} />
       </Switch>
     </main>
   );

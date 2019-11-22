@@ -26,6 +26,17 @@ query {
 }
 `;
 
+export const MODERATABLE_PROMPTS = gql`
+  query{
+    moderatablePrompts {
+      id
+      createdAt
+      updatedAt
+      title
+    }
+  }
+`;
+
 export const PUBLISHED_PROMPTS = gql`
   query {
     publishedPrompts {

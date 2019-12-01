@@ -33,6 +33,13 @@ export const About = (props) => {
         <h2>Help!</h2>
         <p>Interested in assisting to get this off the ground?  Want to facilitate and pilot a new Affinity Group?  Have a great idea for a new Feature?   Something not working the way you think it should?</p>
         <p>Lets talk! We look forward to connecting.</p>
+
+        <h1>Contributors</h1>
+        Thank you to the following people and many others who have chosen to remain anonymous for putting your energy into this mission.
+        <ul>
+          <li><a href='http://katemills.co/' target='_blank'>Kate Mills</a> - Product Design and Copy Editing</li>
+          <li>trevor smith - Project Management and Software Development</li>
+        </ul>
       </div>
     </div>
   );

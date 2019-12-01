@@ -10,8 +10,6 @@
     - [ ] View, approve, and deny unpublished content
     - [ ] Notify moderators when unpublished content is created
   - [ ] Notify user upon posting that their content is being manually reviewed
-- [ ] Add an About / What is this? page
-- [ ] Add contributors page
 - [ ] Tests
 - [ ] Automated Build
 - [ ] Versioning
@@ -33,6 +31,8 @@
 - [ ] Full site design
 
 ## DONEs:
+- [x] Add contributors page
+- [x] Add an About / What is this? page
 - [x] clean up dependencies
 - [x] Proxy application request through nginx or apache
 - [x] Custom domain

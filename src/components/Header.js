@@ -8,9 +8,11 @@ export const Header = (props) => {
           <div><a class="navbar-brand" href="/"><h1 class="mb-0 text-white">hawthorn.</h1></a></div>
           <small class="color-field">healing folks healing folks</small>
         </div>
+        {/*  Commenting out navbar toggle button until launch of affinity groups
         <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+        */}
       </nav>
       <div class="collapse navbar-light bg-light rounded" id="navbarToggle">
         <ul class="navbar-nav m-3">

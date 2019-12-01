@@ -1,5 +1,6 @@
 import React from 'react';
 import { Switch, Route } from "react-router-dom";
+import { About } from './About';
 import { AddPrompt } from './AddPrompt';
 import { Conversations } from './Conversations';
 import { LoginWithRouter as Login } from './Login';
@@ -35,7 +36,13 @@ export const Routes = (props) => {
     <main role="main" class="container">
       <Header />
       <Switch>
-        <Route exact path="/" component={Conversations} />
+        <Route exact path='/' component={() => {
+            {/* Until launch of affinity groups, redirect the root route to the /about (hey! that rhymes!) */}
+            window.location = '/about'
+            return null
+          }
+        }/>
+        <Route exact path="/about" component={About} />
         <Route exact path="/prompt" component={AddPrompt} />
         {/* OAuth2 authorization grant requires redirect to authorization server */}
         <Route exact path="/login" component={Login} />

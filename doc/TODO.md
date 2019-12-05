@@ -3,6 +3,7 @@
     in h1 (at Header.js:8)"
 
 # TODOs:
+- [ ] Contact / feedback form
 - [ ] Moderation Phase 1
   - [x] Publish only publishable Prompts and Posts
   - [x] Create Prompts and Posts as unpublished
@@ -31,6 +32,7 @@
 - [ ] Full site design
 
 ## DONEs:
+- [x] About Page
 - [x] Add contributors page
 - [x] Add an About / What is this? page
 - [x] clean up dependencies

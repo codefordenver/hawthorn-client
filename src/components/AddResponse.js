@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import { withRouter } from "react-router"
 import { useMutation } from '@apollo/react-hooks';
 import { errorHandler } from '../services/graphql/errorHandler'
 import { CREATE_POST, PUBLISHED_PROMPTS } from '../services/graphql/queries';
 
-export const AddResponse = (props) => {
+export const AddResponse = withRouter((props) => {
   const [showResponseForm, setShowResponseForm] = useState(false)
 
   let input;
@@ -64,4 +65,4 @@ export const AddResponse = (props) => {
       {responseForm}
     </div>
   );
-};
+});

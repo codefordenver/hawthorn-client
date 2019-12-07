@@ -1,6 +1,7 @@
 # Bugs
 - [ ] "index.js:1375 Warning: Invalid DOM property `class`. Did you mean `className`?
     in h1 (at Header.js:8)"
+- [ ] Frontend fails catastrophically if it cannot reach backend. Can we just show static content?
 
 # TODOs:
 - [ ] Contact / feedback form

@@ -1,9 +1,10 @@
 import React from 'react';
+import { withRouter } from "react-router"
 import { useMutation } from '@apollo/react-hooks';
 import { errorHandler } from '../services/graphql/errorHandler'
 import { CREATE_PROMPT, PUBLISHED_PROMPTS } from '../services/graphql/queries';
 
-export const AddPrompt = (props) => {
+export const AddPrompt = withRouter((props) => {
   let input;
   const [createPrompt, { loading, error }] = useMutation(
     CREATE_PROMPT,
@@ -48,4 +49,4 @@ export const AddPrompt = (props) => {
       </form>
     </div>
   );
-};
+});

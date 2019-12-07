@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { withRouter } from "react-router"
 import { useQuery } from '@apollo/react-hooks';
 import { PUBLISHED_PROMPTS } from '../services/graphql/queries'
 import { errorHandler } from '../services/graphql/errorHandler'
 import { Conversation } from './Conversation';
 
-export const Conversations = (props) => {
+export const Conversations = withRouter((props) => {
   const [promptIndex, setPromptIndex] = useState(0);
 
   const { loading, error, data } = useQuery(PUBLISHED_PROMPTS,
@@ -44,4 +45,4 @@ export const Conversations = (props) => {
       </div>
     )
   }
-};
+});

@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/react-hooks';
 import qs from 'qs';
 import { LOGIN } from '../services/graphql/queries';
 
-export const Login = (props) => {
+export const Login = withRouter((props) => {
   const queryParams = qs.parse(props.location.search, { ignoreQueryPrefix: true })
   const { loading, error, data } = useQuery(LOGIN, {
     variables: { code: queryParams.code }
@@ -29,6 +29,4 @@ export const Login = (props) => {
       <p>username: {data.login.username}</p>
     </div>
   );
-};
-
-export const LoginWithRouter = withRouter(Login)
+});

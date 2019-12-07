@@ -8,6 +8,7 @@
     "apollo-cache-inmemory": "^1.6.3",
     "apollo-client": "^2.6.4",
     "apollo-link-http": "^1.5.16",
+    "graphql": "^14.5.8",
     "moment": "^2.24.0",
     "qs": "^6.9.0",
     "react": "^16.10.0",

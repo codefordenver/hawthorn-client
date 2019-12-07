@@ -1,10 +1,11 @@
 import React from 'react';
+import { withRouter } from "react-router"
 import { ModeratablePrompt } from './ModeratablePrompt'
 import { useQuery } from '@apollo/react-hooks';
 import { MODERATABLE_PROMPTS } from '../services/graphql/queries'
 import { errorHandler } from '../services/graphql/errorHandler'
 
-export const ModeratablePrompts = (props) => {
+export const ModeratablePrompts = withRouter((props) => {
   const { loading, error, data } = useQuery(MODERATABLE_PROMPTS,
   {
     onError(error) {
@@ -35,4 +36,4 @@ export const ModeratablePrompts = (props) => {
       </div>
     )
   }
-};
+});

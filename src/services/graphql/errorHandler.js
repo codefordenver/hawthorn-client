@@ -1,7 +1,6 @@
 export const errorHandler = (error, history) => {
   if (error.graphQLErrors) {
     error.graphQLErrors.forEach(graphQLError => {
-      console.log('errorHandler', graphQLError)
       const { extensions } = graphQLError
       if (extensions) {
         switch (extensions.code) {

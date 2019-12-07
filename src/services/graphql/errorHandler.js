@@ -5,13 +5,10 @@ export const errorHandler = (error, history) => {
       if (extensions) {
         switch (extensions.code) {
           case "UNAUTHENTICATED":
-            history.push("/login/init")
-            break
           case "FORBIDDEN":
-            history.push("/")
-            break
           default:
-            // TODO - What to do here?
+            // TODO - improve error handling.  Tell end-user an error occurred.
+            history.push("/")
         }
       }
     })

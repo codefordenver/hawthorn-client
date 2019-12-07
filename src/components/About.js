@@ -38,7 +38,7 @@ export const About = (props) => {
         <ul>
           <li><a href='https://github.com/cedewey' target='_blank'>Clayton Dewey</a> - Copy Editing</li>
           <li><a href='http://katemills.co/' target='_blank'>Kate Mills</a> - Product Design and Copy Editing</li>
-          <li><a href='https://github.com/moonquay' target='_blank'>moonquay</a> - Software Development and Product Design</li>
+          <li><a href='https://github.com/moonquay' target='_blank'>Monk DeVoe</a> - Software Development and Product Design</li>
           <li>trevor smith - Project Management and Software Development</li>
         </ul>
       </div>

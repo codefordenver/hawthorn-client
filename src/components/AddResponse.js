@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { withRouter } from "react-router"
 import { useMutation } from '@apollo/react-hooks';
 import { errorHandler } from '../services/graphql/errorHandler'
-import { CREATE_POST, PUBLISHED_PROMPTS } from '../services/graphql/queries';
+import { CREATE_POST, PUBLISHED_THREADS } from '../services/graphql/queries';
 
 export const AddResponse = withRouter((props) => {
   const [showResponseForm, setShowResponseForm] = useState(false)
@@ -15,14 +15,14 @@ export const AddResponse = withRouter((props) => {
          errorHandler(error, props.history)
       },
       update(cache, { data: { createPost } }) {
-        const { publishedPrompts } = cache.readQuery({ query: PUBLISHED_PROMPTS });
-        let prompts = publishedPrompts.slice()
-        for (let i = 0; i < prompts.length; i++) {
-          if (prompts[i].id === createPost.prompt.id) {
-            prompts[i].posts = [createPost].concat(prompts[i].posts)
+        const { publishedThreads } = cache.readQuery({ query: PUBLISHED_THREADS });
+        let threads = publishedThreads.slice()
+        for (let i = 0; i < threads.length; i++) {
+          if (threads[i].id === createPost.thread.id) {
+            threads[i].posts = [createPost].concat(threads[i].posts)
             cache.writeQuery({
-              query: PUBLISHED_PROMPTS,
-              data: { publishedPrompts: prompts },
+              query: PUBLISHED_THREADS,
+              data: { publishedThreads: threads },
             });
             break;
           }
@@ -40,7 +40,7 @@ export const AddResponse = withRouter((props) => {
                     onSubmit={e => {
                       e.preventDefault()
                       if (input.value) {
-                        createPost({ variables: { title: input.value, promptId: props.promptId } })
+                        createPost({ variables: { title: input.value, threadId: props.threadId } })
                       }
                       input.value = ''
                       setShowResponseForm(!showResponseForm)

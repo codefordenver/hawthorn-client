@@ -1,9 +1,9 @@
 import { gql } from 'apollo-boost';
 
 // Queries
-export const PUBLISHED_PROMPTS = gql`
+export const PUBLISHED_THREADS = gql`
   query {
-    publishedPrompts {
+    publishedThreads {
       id
       title
       posts {
@@ -16,20 +16,20 @@ export const PUBLISHED_PROMPTS = gql`
 
 // Mutations
 export const CREATE_POST = gql`
-mutation CreatePost($title: String!, $promptId: ID!) {
-  createPost(title: $title, promptId: $promptId) {
+mutation CreatePost($title: String!, $threadId: ID!) {
+  createPost(title: $title, threadId: $threadId) {
     id
     title
-    prompt {
+    thread {
       id
     }
   }
 }
 `;
 
-export const CREATE_PROMPT = gql`
-mutation CreatePrompt($title: String!) {
-  createPrompt(title: $title) {
+export const CREATE_THREAD = gql`
+mutation CreateThread($title: String!) {
+  createThread(title: $title) {
     id
     title
   }

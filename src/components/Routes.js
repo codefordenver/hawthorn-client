@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from "react-router"
 import { Switch, Route } from "react-router-dom";
 import { About } from './About';
-import { AddPrompt } from './AddPrompt';
+import { AddThread } from './AddThread';
 import { Conversations } from './Conversations';
 import { Header } from './Header';
 
@@ -19,7 +19,7 @@ export const Routes = withRouter((props) => {
         }/>
         <Route exact path="/about" component={About} />
         <Route exact path="/groups" component={Conversations} />
-        <Route exact path="/prompt" component={AddPrompt} />
+        <Route exact path="/thread" component={AddThread} />
       </Switch>
     </main>
   );

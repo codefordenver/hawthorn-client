@@ -1,6 +1,6 @@
 import React from 'react';
 import { Post } from './Post';
-import { Prompt } from './Prompt';
+import { Thread } from './Thread';
 
 export const Conversation = (props) => {
   let posts
@@ -17,7 +17,7 @@ export const Conversation = (props) => {
 
   return (
     <div>
-      <Prompt promptId={props.id} body={props.title} />
+      <Thread threadId={props.id} body={props.title} />
       {posts}
     </div>
   )

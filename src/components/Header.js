@@ -20,7 +20,7 @@ export const Header = (props) => {
             <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item ml-auto">
-            <a class="nav-link" href="/prompt">Add a Prompt</a>
+            <a class="nav-link" href="/thread">Add a Thread</a>
           </li>
         </ul>
       </div>

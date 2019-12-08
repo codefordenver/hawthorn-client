@@ -8,7 +8,7 @@ export const Conversation = (props) => {
   if (props.posts.length > 0) {
     posts = <div class="ml-0">
               {props.posts.map((post) =>
-                <Post key={post.id} body={post.title} />
+                <Post key={post.id} body={post.content} />
               )}
             </div>
   } else {

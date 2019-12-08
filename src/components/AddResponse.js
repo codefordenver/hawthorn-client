@@ -40,7 +40,7 @@ export const AddResponse = withRouter((props) => {
                     onSubmit={e => {
                       e.preventDefault()
                       if (input.value) {
-                        createPost({ variables: { title: input.value, threadId: props.threadId } })
+                        createPost({ variables: { content: input.value, threadId: props.threadId } })
                       }
                       input.value = ''
                       setShowResponseForm(!showResponseForm)

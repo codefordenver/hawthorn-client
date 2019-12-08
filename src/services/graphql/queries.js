@@ -8,7 +8,7 @@ export const PUBLISHED_THREADS = gql`
       title
       posts {
         id
-        title
+        content
       }
     }
   }
@@ -16,10 +16,10 @@ export const PUBLISHED_THREADS = gql`
 
 // Mutations
 export const CREATE_POST = gql`
-mutation CreatePost($title: String!, $threadId: ID!) {
-  createPost(title: $title, threadId: $threadId) {
+mutation CreatePost($content: String!, $threadId: ID!) {
+  createPost(content: $content, threadId: $threadId) {
     id
-    title
+    content
     thread {
       id
     }

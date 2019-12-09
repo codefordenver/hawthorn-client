@@ -4,19 +4,14 @@
 - [ ] Frontend fails catastrophically if it cannot reach backend. Can we just show static content?
 
 # TODOs:
+- [ ] User can add a new Thread on a Group, "Start a conversation"
+- [ ] Update caches on content Post so that it shows up in Thread / Group on submit
 - [ ] Contact / feedback form
-- [ ] Moderation Phase 1
-  - [x] Publish only publishable Prompts and Posts
-  - [x] Create Prompts and Posts as unpublished
-  - [ ] Authenticated user with moderator role can publish Posts and Prompts
-    - [ ] View, approve, and deny unpublished content
-    - [ ] Notify moderators when unpublished content is created
-  - [ ] Notify user upon posting that their content is being manually reviewed
 - [ ] Tests
 - [ ] Automated Build
 - [ ] Versioning
   - [ ] Release notes
-    - [ ] Static Page hosted on site
+- [ ] Update `/about` with best practice on static pages for react
 - [ ] HTTPS
 - [ ] Use consistent style - semicolons or not? what else is important in JS world? - Research linting
 - [ ] Convert to typescript

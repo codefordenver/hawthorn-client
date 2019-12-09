@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { withRouter } from "react-router"
 import { useMutation } from '@apollo/react-hooks';
 import { errorHandler } from '../services/graphql/errorHandler'
-import { CREATE_POST, PUBLISHED_THREADS } from '../services/graphql/queries';
+import { CREATE_POST } from '../services/graphql/queries';
 
 export const AddResponse = withRouter((props) => {
   const [showResponseForm, setShowResponseForm] = useState(false)
@@ -14,25 +14,11 @@ export const AddResponse = withRouter((props) => {
       onError(error) {
          errorHandler(error, props.history)
       },
-      update(cache, { data: { createPost } }) {
-        const { publishedThreads } = cache.readQuery({ query: PUBLISHED_THREADS });
-        let threads = publishedThreads.slice()
-        for (let i = 0; i < threads.length; i++) {
-          if (threads[i].id === createPost.thread.id) {
-            threads[i].posts = [createPost].concat(threads[i].posts)
-            cache.writeQuery({
-              query: PUBLISHED_THREADS,
-              data: { publishedThreads: threads },
-            });
-            break;
-          }
-        }
-      }
     }
   );
 
   if (loading) return <p>Loading...</p>
-  if (error) return <p>I'm so very sorry, a real bad error occured while adding your response</p>
+  if (error) return <p>I'm so very sorry, a real bad error occured while adding your response {error}</p>
 
   let responseForm
   if (showResponseForm) {

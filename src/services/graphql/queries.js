@@ -1,15 +1,46 @@
 import { gql } from 'apollo-boost';
 
 // Queries
-export const PUBLISHED_THREADS = gql`
-  query {
-    publishedThreads {
+export const GROUP = gql`
+  query Group($id: ID!) {
+    group(id:$id) {
       id
-      title
-      posts {
+      name
+      description
+      threads {
         id
-        content
+        title
+        posts {
+          id
+          content
+        }
       }
+    }
+  }
+`;
+
+export const GROUPS = gql`
+  query {
+    groups {
+      id
+      name
+      description
+      threads{
+        title
+      }
+    }
+  }
+`;
+
+export const THREAD = gql`
+  query Thread($id: ID!) {
+    thread(id:$id) {
+      id
+       title
+       posts {
+         content
+         createdAt
+       }
     }
   }
 `;

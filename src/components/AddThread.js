@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from "react-router"
 import { useMutation } from '@apollo/react-hooks';
 import { errorHandler } from '../services/graphql/errorHandler'
-import { CREATE_THREAD, PUBLISHED_THREADS } from '../services/graphql/queries';
+import { CREATE_THREAD } from '../services/graphql/queries';
 
 export const AddThread = withRouter((props) => {
   let input;
@@ -12,15 +12,6 @@ export const AddThread = withRouter((props) => {
       onError(error) {
          errorHandler(error, props.history)
       },
-      update(cache, { data: { createThread } }) {
-        const { publishedThreads } = cache.readQuery({ query: PUBLISHED_THREADS });
-        let threads = publishedThreads.slice()
-        threads.unshift(createThread)
-        cache.writeQuery({
-          query: PUBLISHED_THREADS,
-          data: { publishedThreads: threads },
-        });
-      }
   });
 
   if (loading) return <p>Loading...</p>

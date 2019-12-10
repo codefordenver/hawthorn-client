@@ -6,7 +6,7 @@ import { CREATE_THREAD } from '../services/graphql/queries';
 
 export const AddThread = withRouter((props) => {
   let input;
-  const [createThread, { loading, error }] = useMutation(
+  const [createThread, { data, loading, error }] = useMutation(
     CREATE_THREAD,
     {
       onError(error) {
@@ -16,28 +16,28 @@ export const AddThread = withRouter((props) => {
 
   if (loading) return <p>Loading...</p>
   if (error) return <p>I'm so very sorry, a real bad error occured while adding your response</p>
+  if (data) props.history.push("/thread/" + data.createThread.id)
 
   return (
-    <div>
+    <div class="m-3">
       <form
         onSubmit={e => {
           e.preventDefault()
           if (input.value) {
-            createThread({ variables: { title: input.value, threadId: props.threadId } })
+            createThread({ variables: { title: input.value, groupId: props.groupId } })
           }
           input.value = ''
-          props.history.push("/")
         }}
       >
         <div class="form-group">
-          <textarea placeholder="Enter thread" class="form-control" rows="2" ref={node => {
+          <textarea placeholder="Type your juicy conversation starter here" class="form-control" rows="2" ref={node => {
               input = node;
             }}
           />
-          <small>Please feel free to thread or ask a question to the community.  Thank you for participating, engaging and connecting. <span role="img" aria-label="praise emoji">🙌</span></small>
+          <small>Please feel free to start a conversation or ask a question to the {props.groupName} community.  Thank you for participating, engaging and connecting. <span role="img" aria-label="praise emoji">🙌</span></small>
         </div>
         <button type="submit" class="btn btn-primary">submit</button>
       </form>
     </div>
-  );
-});
+  )
+})

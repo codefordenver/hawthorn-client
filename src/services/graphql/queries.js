@@ -59,8 +59,8 @@ mutation CreatePost($content: String!, $threadId: ID!) {
 `;
 
 export const CREATE_THREAD = gql`
-mutation CreateThread($title: String!) {
-  createThread(title: $title) {
+mutation CreateThread($title: String!, $groupId: ID!) {
+  createThread(title: $title, groupId: $groupId) {
     id
     title
   }

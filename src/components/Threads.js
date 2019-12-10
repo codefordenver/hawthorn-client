@@ -4,11 +4,12 @@ import { useQuery } from '@apollo/react-hooks';
 import { ThreadPreview } from './ThreadPreview';
 
 export const Threads = withRouter((props) => {
-  const [threadIndex, setThreadIndex] = useState(0);
+  const [threadIndex, setThreadIndex] = useState(0)
 
   if (props.threads && props.threads.length > 0) {
     return (
-      <div class="bg-white rounded shadow-sm">
+      <div class="bg-white rounded shadow-sm m-3">
+        <h4 class="pl-3">Active conversations:</h4>
         <ul>
           {props.threads.map(function(thread) {
             return <ThreadPreview

@@ -25,10 +25,13 @@ export const About = (props) => {
         <h1>Contributors</h1>
         Thank you to the following people and many others who have chosen to remain anonymous for putting your energy into this mission.
         <ul>
-          <li><a href='https://github.com/cedewey' target='_blank'>Clayton Dewey</a> - Copy Editing</li>
-          <li><a href='http://katemills.co/' target='_blank'>Kate Mills</a> - Product Design and Copy Editing</li>
-          <li><a href='https://github.com/moonquay' target='_blank'>Monk DeVoe</a> - Software Development and Product Design</li>
-          <li>trevor smith - Project Management and Software Development</li>
+          <li><a href='https://github.com/cedewey' target='_blank'>Clayton Dewey</a> - Copy editing</li>
+          <li><a href='https://codefordenver.org/#/' target='_blank'>Code for Denver</a> - Welcoming and beautiful community contributing space, software development, and energy</li>
+          <li><a href='https://github.com/moonquay' target='_blank'>Monk DeVoe</a> - Software development and product design</li>
+          <li><a href='http://www.honeycombhealing.org/' target='_blank'>Kris Drickey</a> - Advising in healing spaces and community design</li>
+          <li><a href='https://www.youtube.com/watch?v=be0WvqBFK3I' target='_blank'>Travis Heath</a> - Advising in narrative therapy and community design</li>
+          <li><a href='http://katemills.co/' target='_blank'>Kate Mills</a> - Product design and copy editing</li>
+          <li>trevor smith - Project management and software development</li>
         </ul>
       </div>
     </div>

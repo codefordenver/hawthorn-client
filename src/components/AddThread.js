@@ -30,7 +30,7 @@ export const AddThread = withRouter((props) => {
         }}
       >
         <div class="form-group">
-          <textarea placeholder="Type your juicy conversation starter here" class="form-control" rows="2" ref={node => {
+          <textarea placeholder="How can your community support you?" class="form-control" rows="2" ref={node => {
               input = node;
             }}
           />

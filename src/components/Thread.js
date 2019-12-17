@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { withRouter } from "react-router"
 import { useQuery } from '@apollo/react-hooks';
 import { THREAD } from '../services/graphql/queries'
@@ -7,8 +7,10 @@ import { AddResponse } from './AddResponse';
 import { Post } from './Post';
 
 export const Thread = withRouter((props) => {
+  const [moderated, setModerated] = useState(false)
   const { threadId } = props.match.params
-  const { loading, error, data } = useQuery(THREAD, { variables: { id: threadId } },
+
+  const { loading, error, data, refetch } = useQuery(THREAD, { variables: { id: threadId } },
   {
     onError(error) {
        errorHandler(error, props.history)
@@ -20,7 +22,7 @@ export const Thread = withRouter((props) => {
   if (error) return <p>Error :(</p>;
 
   let posts
-  if (data.thread && data.thread.posts.length > 0) {
+  if (data.thread && data.thread.posts && data.thread.posts.length > 0) {
     posts = <div class="ml-0">
               {data.thread.posts.map((post) =>
                 <Post key={post.id} body={post.content} />
@@ -30,11 +32,18 @@ export const Thread = withRouter((props) => {
     posts = <p class='m-3 pb-3'>noone has responded yet, be the first to respond</p>
   }
 
+  let moderationAlert = <div />
+  if (moderated) {
+    moderationAlert = <div class="alert alert-warning" role="alert">
+      The content of your conversation may violate the community's code of conduct.  A moderator will review your response shortly and publish it if it falls within the code of conduct.
+    </div>
+  }
   if (data.thread) {
     return (
       <div class="border-bottom border-gray m-3">
         <h2>{data.thread.title}</h2>
-        <AddResponse threadId={threadId} />
+        {moderationAlert}
+        <AddResponse threadId={threadId} updateParent={refetch} setModerated={setModerated}/>
         {posts}
       </div>
     )

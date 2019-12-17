@@ -3,6 +3,7 @@ import { withRouter } from "react-router"
 import { useMutation } from '@apollo/react-hooks';
 import { errorHandler } from '../services/graphql/errorHandler'
 import { CREATE_POST } from '../services/graphql/queries';
+import { THREAD } from '../services/graphql/queries';
 
 export const AddResponse = withRouter((props) => {
   const [showResponseForm, setShowResponseForm] = useState(false)
@@ -13,7 +14,7 @@ export const AddResponse = withRouter((props) => {
     {
       onError(error) {
          errorHandler(error, props.history)
-      },
+      }
     }
   );
 
@@ -26,10 +27,12 @@ export const AddResponse = withRouter((props) => {
                     onSubmit={e => {
                       e.preventDefault()
                       if (input.value) {
-                        createPost({ variables: { content: input.value, threadId: props.threadId } })
+                        createPost({ variables: { content: input.value, threadId: props.threadId } }).then(function(response) {
+                          props.setModerated(response.data.createPost.moderation !== null)
+                          props.updateParent()
+                          setShowResponseForm(!showResponseForm)
+                        })
                       }
-                      input.value = ''
-                      setShowResponseForm(!showResponseForm)
                     }}>
                     <div class="form-group">
                       <textarea class="form-control" rows="3" ref={node => {
@@ -46,9 +49,11 @@ export const AddResponse = withRouter((props) => {
                       onClick={() => setShowResponseForm(!showResponseForm)}>share your response</button>
   }
 
+  let body = <div class="mx-0 mb-3">
+    {responseForm}
+  </div>
+
   return (
-    <div class="mx-0 mb-3">
-      {responseForm}
-    </div>
+    body
   );
 });

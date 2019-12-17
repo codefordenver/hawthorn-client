@@ -38,6 +38,7 @@ export const THREAD = gql`
       id
        title
        posts {
+         id
          content
          createdAt
        }
@@ -51,8 +52,9 @@ mutation CreatePost($content: String!, $threadId: ID!) {
   createPost(content: $content, threadId: $threadId) {
     id
     content
-    thread {
-      id
+    createdAt
+    moderation {
+      status
     }
   }
 }
@@ -62,6 +64,9 @@ export const CREATE_THREAD = gql`
 mutation CreateThread($title: String!, $groupId: ID!) {
   createThread(title: $title, groupId: $groupId) {
     id
+    moderation {
+      status
+    }
     title
   }
 }

@@ -25,7 +25,7 @@ export const Group = withRouter((props) => {
     newThreadForm = <button
                       type="button"
                       class="btn btn-primary m-3"
-                      onClick={() => setShowNewThreadForm(!showNewThreadForm)}>Start a conversation</button>
+                      onClick={() => setShowNewThreadForm(!showNewThreadForm)}>start a conversation</button>
   }
 
   if (loading) return <p>Loading...</p>;
@@ -35,7 +35,7 @@ export const Group = withRouter((props) => {
   let moderationAlert = <div />
   if (moderated) {
     moderationAlert = <div class="alert alert-warning" role="alert">
-      The content of your response may violate the community's code of conduct.  A moderator will review your response shortly and publish it if it falls within the code of conduct.
+      The content of your response may violate the Hawthorn Code of Conduct  A moderator will review your response shortly and publish it if it falls within the Code of Conduct.
     </div>
   }
   return (

@@ -23,6 +23,9 @@ export const Header = (props) => {
           <li class="nav-item ml-auto">
             <a class="nav-link" href="/code-of-conduct">Code of Conduct</a>
           </li>
+          <li class="nav-item ml-auto">
+            <a class="nav-link" href="/contact-us">Contact Us</a>
+          </li>
         </ul>
       </div>
     </div>

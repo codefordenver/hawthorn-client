@@ -3,6 +3,7 @@ import { withRouter } from "react-router"
 import { Switch, Route } from "react-router-dom";
 import { About } from './About';
 import { CodeOfConduct } from './CodeOfConduct';
+import { ContactForm } from './ContactForm';
 import { Group } from './Group';
 import { Groups } from './Groups';
 import { Header } from './Header';
@@ -16,6 +17,7 @@ export const Routes = withRouter((props) => {
         <Route exact path='/' component={Groups} />
         <Route exact path="/about" component={About} />
         <Route exact path="/code-of-conduct" component={CodeOfConduct} />
+        <Route exact path="/contact-us" component={ContactForm} />
         <Route path="/group/:groupId" component={Group} />
         <Route path="/thread/:threadId" component={Thread} />
       </Switch>

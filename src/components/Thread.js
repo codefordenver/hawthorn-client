@@ -35,7 +35,7 @@ export const Thread = withRouter((props) => {
   let moderationAlert = <div />
   if (moderated) {
     moderationAlert = <div class="alert alert-warning" role="alert">
-      The content of your conversation may violate the Hawthorn Code of Conduct  A moderator will review your response shortly and publish it if it falls within the Code of Conduct.
+      The content of your conversation may violate the <a href='/code-of-conduct'>Hawthorn Code of Conduct</a>.  A moderator will review your response shortly and publish it if it falls within the Code of Conduct.
     </div>
   }
   if (data.thread) {

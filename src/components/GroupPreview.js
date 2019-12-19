@@ -11,7 +11,7 @@ export const GroupPreview = withRouter((props) => {
         type="button"
         class={"btn btn-outline-primary"}
         onClick={() => {props.history.push('/group/' + props.groupId)}}>
-        Enter Group
+        join community
         </button>
     </div>
   )

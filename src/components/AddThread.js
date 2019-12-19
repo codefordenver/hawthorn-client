@@ -16,7 +16,6 @@ export const AddThread = withRouter((props) => {
 
   if (loading) return <p>Loading...</p>
   if (error) return <p>I'm so very sorry, a real bad error occured while adding your response</p>
-  if (data) props.history.push("/thread/" + data.createThread.id)
 
   return (
     <div class="m-3">
@@ -24,7 +23,10 @@ export const AddThread = withRouter((props) => {
         onSubmit={e => {
           e.preventDefault()
           if (input.value) {
-            createThread({ variables: { title: input.value, groupId: props.groupId } })
+            createThread({ variables: { title: input.value, groupId: props.groupId } }).then(function(response) {
+               props.setModerated(response.data.createThread.moderation !== null)
+               props.updateParent()
+            })
           }
           input.value = ''
         }}

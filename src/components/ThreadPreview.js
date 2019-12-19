@@ -14,12 +14,12 @@ export const ThreadPreview = withRouter((props) => {
 
   return (
     <div class="border-bottom border-gray m-3">
-      <h2>{props.title}</h2>
+      <h4>{props.title}</h4>
       <button
         type="button"
         class={"btn btn-outline-primary"}
         onClick={() => {props.history.push('/thread/' + props.threadId)}}>
-        Enter Thread
+        join conversation
         </button>
       {posts}
     </div>

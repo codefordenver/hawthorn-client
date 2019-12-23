@@ -34,6 +34,7 @@ export const AddResponse = withRouter((props) => {
                         })
                       }
                     }}>
+                    <h3>Share your response</h3>
                     <div class="form-group">
                       <textarea class="form-control" rows="3" ref={node => {
                           input = node

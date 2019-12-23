@@ -32,11 +32,12 @@ export const AddThread = withRouter((props) => {
         }}
       >
         <div class="form-group">
+          <h3>Start a conversation</h3>
           <textarea placeholder="How can your community support you?" class="form-control" rows="2" ref={node => {
               input = node;
             }}
           />
-          <small>Please feel free to start a conversation or ask a question to the {props.groupName} community.  Thank you for participating, engaging and connecting. <span role="img" aria-label="praise emoji">🙌</span></small>
+          <small>The first step is showing up.  Thank you for participating, engaging and connecting with the community. <span role="img" aria-label="praise emoji">🙌</span></small>
         </div>
         <button type="submit" class="btn btn-primary">submit</button>
       </form>

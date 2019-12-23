@@ -1,7 +1,4 @@
 import React from 'react'
-import exampleGroup from './example-group.png'
-import exampleGroups from './example-groups.png'
-import exampleThread from './example-thread.png'
 
 export const About = (props) => {
   return (
@@ -14,13 +11,7 @@ export const About = (props) => {
         <p>Hawthorn is based on the concept of <a href='https://en.wikipedia.org/wiki/Affinity_group' target='_blank'>affinity groups</a>, a group of individuals who come together around a shared experience, interest or common goal. Whether your group starts as friends or strangers, affinity groups often develop into a trusted circle of confidants, people you can go to share a life experience with or engage in facilitated conversation about the topics that are immediately affecting your life.</p>
         <p>With Hawthorn affinity groups, you are free to start or join conversations and share useful resources with people in your community.  Find an awesome community resource in your neighborhood?  Having difficulty navigating something?  Organizing a political action?  Ask for support and share it with the wider community.</p>
         <p>Conversation held within Hawthorn groups are considered confidential and private to the group. Your identity is anonymous by default. You decide what you want to to share about yourself and when. In order to foster a safe space, a moderation process will be in place to counter bad actors and harmful communication.</p>
-        <p>Please contact us if you are interested in championing a new affinity group and building community on Hawthorn.</p>
-
-        <h1>What this can look like</h1>
-        <p>The following are some example screenshots we took recently while developing Hawthorn.  They show what groups, an individual group, and a conversation might look like in the near future.</p>
-        <img src={exampleGroups} class="img-fluid border border-secondary rounded mb-3" alt="Example listing of groups"/>
-        <img src={exampleGroup} class="img-fluid border border-secondary rounded mb-3" alt="Example group"/>
-        <img src={exampleThread} class="img-fluid border border-secondary rounded mb-3" alt="Example thread"/>
+        <p><a href='/contact-us'>Please contact us</a> if you are interested in championing a new affinity group and building community on Hawthorn.</p>
 
         <h1>Join the community</h1>
         <h2>Hawthorn is owned and developed by you</h2>
@@ -30,8 +21,8 @@ export const About = (props) => {
         <p>The Hawthorn software is open-source.  This means you can transparently see how we built it, and what we are doing with your data. Anyone can contribute to the project to make it better.  Check out the code for the <a href='https://github.com/trex/hawthorn-client' target='_blank'>frontend here</a>, and the <a href='https://github.com/trex/hawthorn-server' target='_blank'>backend here</a>.</p>
 
         <h2>Help!</h2>
-        <p>Interested in assisting to get this off the ground?  Want to build community around a new affinity group?  Have a need for a new feature?   Something not working the way you think it should?</p>
-        <p>Let's talk!  We will be building a contact form shortly, please check back.  We look forward to connecting.</p>
+        <p>Interested in assisting to get this off the ground?  Want to propose a change to the <a href='/code-of-conduct'>Code of Conduct</a>? Want to build community around a new affinity group?  Have a need for a new feature?   Something not working the way you think it should?</p>
+        <p><a href='/contact-us'>Let's talk!</a>  We will be building a contact form shortly, please check back.  We look forward to connecting.</p>
 
         <h1>Contributors</h1>
         Thank you to the following people and many others who have chosen to remain anonymous for putting your energy into this mission.

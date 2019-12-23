@@ -20,10 +20,7 @@ export const Threads = withRouter((props) => {
     );
   } else {
     return (
-      <div>
-        <h1>welcome.</h1>
-        <p>there is nothing to see here yet. please come back later</p>
-      </div>
+      <p class="m-3">This is a new community.  Start the first conversation if you have something on your mind.</p>
     )
   }
 })

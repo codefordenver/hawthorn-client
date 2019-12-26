@@ -24,7 +24,7 @@ export const Group = withRouter((props) => {
   } else {
     newThreadForm = <button
                       type="button"
-                      class="btn btn-primary m-3"
+                      className="btn btn-primary m-3"
                       onClick={() => setShowNewThreadForm(!showNewThreadForm)}>start a conversation</button>
   }
 
@@ -34,15 +34,15 @@ export const Group = withRouter((props) => {
 
   let moderationAlert = <div />
   if (moderated) {
-    moderationAlert = <div class="alert alert-warning" role="alert">
+    moderationAlert = <div className="alert alert-warning" role="alert">
       The content of your response may violate the <a href='/code-of-conduct'>Hawthorn Code of Conduct</a>.  A moderator will review your response shortly and publish it if it falls within the Code of Conduct.
     </div>
   }
   return (
     <div>
-      <div class="m-3 border-bottom border-gray">
-        <h1>{data.group.name}</h1>
-        <p>{data.group.description}</p>
+      <div className="m-3 border-bottom border-gray">
+        <h1 className="display-3 text-center">{data.group.name}</h1>
+        <p className="text-muted text-center lead">{data.group.description}</p>
       </div>
       {moderationAlert}
       {newThreadForm}

@@ -6,8 +6,8 @@ import { ThreadPreview } from './ThreadPreview';
 export const Threads = withRouter((props) => {
   if (props.threads && props.threads.length > 0) {
     return (
-      <div class="bg-white rounded shadow-sm m-3">
-        <h2 class="pl-3">Active conversations:</h2>
+      <div className="bg-white rounded shadow-sm m-3">
+        <h2 className="pl-3">Active conversations:</h2>
         <ul>
           {props.threads.map(function(thread) {
             return <ThreadPreview
@@ -20,7 +20,7 @@ export const Threads = withRouter((props) => {
     );
   } else {
     return (
-      <p class="m-3">This is a new community.  Start the first conversation if you have something on your mind.</p>
+      <p className="m-3">This is a new community.  Start the first conversation if you have something on your mind.</p>
     )
   }
 })

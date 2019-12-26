@@ -19,7 +19,7 @@ export const AddGroup = withRouter((props) => {
   if (error) return <p>I'm so very sorry, a real bad error occured while adding your response</p>
 
   return (
-    <div class="m-3">
+    <div className="m-3">
       <form
         onSubmit={e => {
           e.preventDefault()
@@ -35,25 +35,25 @@ export const AddGroup = withRouter((props) => {
           nameInput.value = ''
         }}
       >
-        <div class="form-group">
+        <div className="form-group">
           <label for="inputCommunityName">New community name</label>
-          <input type="text" class="form-control" id="inputCommunityName"
+          <input type="text" className="form-control" id="inputCommunityName"
             placeholder="Enter community name"
             ref={node => {
               nameInput = node;
             }}/>
-          <small class="form-text text-danger">* required</small>
+          <small className="form-text text-danger">* required</small>
         </div>
-        <div class="form-group">
+        <div className="form-group">
           <label for="inputCommunityDescription">Description</label>
-          <input type="text" class="form-control" id="inputCommunityName"
+          <input type="text" className="form-control" id="inputCommunityName"
             placeholder="Enter community description"
             ref={node => {
                 descriptionInput = node;
             }} />
-          <small class="form-text text-danger">* required</small>
+          <small className="form-text text-danger">* required</small>
         </div>
-        <button type="submit" class="btn btn-primary">submit</button>
+        <button type="submit" className="btn btn-primary">submit</button>
       </form>
     </div>
   )

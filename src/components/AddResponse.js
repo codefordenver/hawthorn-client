@@ -35,22 +35,22 @@ export const AddResponse = withRouter((props) => {
                       }
                     }}>
                     <h3>Share your response</h3>
-                    <div class="form-group">
-                      <textarea class="form-control" rows="3" ref={node => {
+                    <div className="form-group">
+                      <textarea className="form-control" rows="3" ref={node => {
                           input = node
                         }}
                       />
                     </div>
-                    <button type="submit" class="btn btn-primary">submit</button>
+                    <button type="submit" className="btn btn-primary">submit</button>
                   </form>
   } else {
     responseForm = <button
                       type="button"
-                      class="btn btn-link"
+                      className="btn btn-link"
                       onClick={() => setShowResponseForm(!showResponseForm)}>share your response</button>
   }
 
-  let body = <div class="mx-0 mb-3">
+  let body = <div className="mx-0 mb-3">
     {responseForm}
   </div>
 

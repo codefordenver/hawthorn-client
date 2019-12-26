@@ -2,8 +2,8 @@ import React from 'react'
 
 export const About = (props) => {
   return (
-    <div class="bg-white rounded shadow-sm ">
-      <div class="m-3">
+    <div className="bg-white rounded shadow-sm ">
+      <div className="m-3">
         <h1>What is Hawthorn?</h1>
         <p>Hawthorn is an online community named for the Hawthorn tree, known in western herbalism for its heart healing properties, both physical and emotional.</p>
         <p>Hawthorn is a place where anyone can gather to practice open and honest communication with other humans from their communities. This is a safe, cooperative environment premised on mutual support.   Hawthorn is a place where you can find support from others who share similar life experiences to your own, while also developing empathy for those with life experiences adjacent to or completely separate from your own. Hawthorn is a place to be seen, and to see others. Hawthorn is a place to heal and grow.</p>

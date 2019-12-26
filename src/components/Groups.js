@@ -17,14 +17,21 @@ export const Groups = withRouter((props) => {
     }
   })
 
+  let groupAdded = function() {
+    setShowNewGroupForm(!showNewGroupForm)
+    refetch()
+  }
+
   let newGroupForm
+  let newGroupButton
   if (showNewGroupForm) {
-    newGroupForm = <AddGroup updateParent={refetch} setModerated={setModerated}/>
+    newGroupForm = <AddGroup updateParent={groupAdded} setModerated={setModerated}/>
   } else {
-    newGroupForm = <button
+    newGroupButton = <button
                       type="button"
-                      class="btn btn-primary m-3"
-                      onClick={() => setShowNewGroupForm(!showNewGroupForm)}>build a new community</button>
+                      className="btn btn-outline-secondary btn-circle m-3"
+                      title="Create a new community"
+                      onClick={() => setShowNewGroupForm(!showNewGroupForm)}>+</button>
   }
 
 
@@ -34,32 +41,46 @@ export const Groups = withRouter((props) => {
 
   let moderationAlert = <div />
   if (moderated) {
-    moderationAlert = <div class="alert alert-warning" role="alert">
+    moderationAlert = <div className="alert alert-warning" role="alert">
       The content of your community name or description may violate the <a href='/code-of-conduct'>Hawthorn Code of Conduct</a>.  A moderator will review your response shortly and publish it if it falls within the Code of Conduct.
     </div>
   }
   if (data.groups.length > 0) {
+    let groupCards = []
+    data.groups.forEach((group, i) =>{
+      groupCards.push(<GroupPreview
+                  key={group.id}
+                  groupId={group.id}
+                  name={group.name}
+                  description={group.description}
+                  threads={group.threads} />)
+      if((i+1) % 3 == 0){
+        groupCards.push(
+          <div class="w-100"></div>
+        )
+      }
+    });
     return (
-      <div class="bg-white rounded shadow-sm">
-        <h1>Communities of Support</h1>
-        {moderationAlert}
+      <div>
+        <h1 className="display-3 text-center">Communities of Support
+          <small>
+            {newGroupButton}
+          </small>
+        </h1>
+        <p className="text-muted text-center lead">find your people</p>
         {newGroupForm}
-        <ul>
-          {data.groups.map(function(group) {
-            return <GroupPreview
-                      key={group.id}
-                      groupId={group.id}
-                      name={group.name}
-                      description={group.description} />;
-          })}
-        </ul>
+        {moderationAlert}
+
+        <div className="card-deck">
+          {groupCards}
+        </div>
       </div>
     );
   } else {
     return (
       <div>
         <h1>welcome.</h1>
-        <p>there is nothing to see here yet.</p>
+        <p>there is nothing to see here yet. create a community to get started</p>
         {moderationAlert}
         {newGroupForm}
       </div>

@@ -23,24 +23,24 @@ export const Thread = withRouter((props) => {
 
   let posts
   if (data.thread && data.thread.posts && data.thread.posts.length > 0) {
-    posts = <div class="ml-0">
+    posts = <div className="ml-0">
               {data.thread.posts.map((post) =>
                 <Post key={post.id} body={post.content} />
               )}
             </div>
   } else {
-    posts = <p class='m-3 pb-3'>noone has responded yet, be the first to respond</p>
+    posts = <p className='m-3 pb-3'>noone has responded yet, be the first to respond</p>
   }
 
   let moderationAlert = <div />
   if (moderated) {
-    moderationAlert = <div class="alert alert-warning" role="alert">
+    moderationAlert = <div className="alert alert-warning" role="alert">
       The content of your conversation may violate the <a href='/code-of-conduct'>Hawthorn Code of Conduct</a>.  A moderator will review your response shortly and publish it if it falls within the Code of Conduct.
     </div>
   }
   if (data.thread) {
     return (
-      <div class="border-bottom border-gray m-3">
+      <div className="border-bottom border-gray m-3">
         <h2>{data.thread.title}</h2>
         {moderationAlert}
         <AddResponse threadId={threadId} updateParent={refetch} setModerated={setModerated}/>
@@ -49,7 +49,7 @@ export const Thread = withRouter((props) => {
     )
   } else {
     return (
-      <div class="border-bottom border-gray m-3">
+      <div className="border-bottom border-gray m-3">
         <p>Thread not found</p>
       </div>
     )

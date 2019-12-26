@@ -1,3 +1,7 @@
+body {
+  padding-top: 58px;
+}
+
 :root {
   /* Colors */
   --color-sky: #286DA8;
@@ -12,3 +16,27 @@
 .color-field { color: var(--color-field); }
 /* Render whitespace */
 .post-body { white-space: pre-wrap; }
+
+.jumbotron {
+  color: white;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./hero2yellow.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 70vh;
+}
+
+.jumbotron .container-fluid  {
+  margin-top: 20%;
+  margin-left: 5%;
+}
+
+.btn-circle {
+    width: 40px;
+    height: 40px;
+    /* padding: 0px 0px; */
+    border-radius: 25px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}

@@ -18,7 +18,7 @@ export const AddThread = withRouter((props) => {
   if (error) return <p>I'm so very sorry, a real bad error occured while adding your response</p>
 
   return (
-    <div class="m-3">
+    <div className="m-3">
       <form
         onSubmit={e => {
           e.preventDefault()
@@ -31,15 +31,15 @@ export const AddThread = withRouter((props) => {
           input.value = ''
         }}
       >
-        <div class="form-group">
+        <div className="form-group">
           <h3>Start a conversation</h3>
-          <textarea placeholder="How can your community support you?" class="form-control" rows="2" ref={node => {
+          <textarea placeholder="How can your community support you?" className="form-control" rows="2" ref={node => {
               input = node;
             }}
           />
           <small>The first step is showing up.  Thank you for participating, engaging and connecting with the community. <span role="img" aria-label="praise emoji">🙌</span></small>
         </div>
-        <button type="submit" class="btn btn-primary">submit</button>
+        <button type="submit" className="btn btn-primary">submit</button>
       </form>
     </div>
   )

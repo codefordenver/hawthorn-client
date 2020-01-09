@@ -40,11 +40,23 @@ export const Thread = withRouter((props) => {
   }
   if (data.thread) {
     return (
-      <div className="border-bottom border-gray m-3">
-        <h2>{data.thread.title}</h2>
-        {moderationAlert}
-        <AddResponse threadId={threadId} updateParent={refetch} setModerated={setModerated}/>
-        {posts}
+      <div>
+        <div className="m-3 border-bottom border-gray">
+          <h3 className="text-center">
+          <button
+            type="button"
+            className={"btn btn-link btn-lg"}
+            onClick={() => {props.history.push('/community/' + data.thread.group.id)}}>
+            &larr; back to '{data.thread.group.name}'
+            </button>
+          </h3>
+        </div>
+        <div className="border-bottom border-gray m-3">
+          <h2>{data.thread.title}</h2>
+          {moderationAlert}
+          <AddResponse threadId={threadId} updateParent={refetch} setModerated={setModerated}/>
+          {posts}
+        </div>
       </div>
     )
   } else {

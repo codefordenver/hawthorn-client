@@ -36,12 +36,16 @@ export const THREAD = gql`
   query Thread($id: ID!) {
     thread(id:$id) {
       id
-       title
-       posts {
+      group {
+        id
+        name
+      }
+      posts {
          id
          content
          createdAt
-       }
+      }
+      title
     }
   }
 `;

@@ -30,6 +30,7 @@ export const About = (props) => {
         <h1>Contributors</h1>
         Thank you to the following people and many others who have chosen to remain anonymous for putting your energy into this mission.
         <ul>
+          <li>Michelle Castor</li>
           <li><a href='https://github.com/cedewey' target='_blank'>Clayton Dewey</a></li>
           <li><a href='https://communitycarecollective.com/' target='_blank'>Community Care Collective</a></li>
           <li><a href='https://codefordenver.org/#/' target='_blank'>Code for Denver</a></li>

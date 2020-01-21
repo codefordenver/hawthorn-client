@@ -19,7 +19,7 @@ export const Index = withRouter((props) => {
           The pattern described by people in these user interviews is common to how small groups have organized historically for change work, such as the consciousness raising feminist groups in the 1960s, affinity groups, and communities of practice.
         </p>
         <p className="text-center">
-          With these requests and the nature of the groups in mind, we will be modeling this feature after the structures identified in the article <a href="https://docs.google.com/document/d/1vUHr_Q18GwJ8Lsp49J3gaIrOp3xi3Cv0PmHeSMPMlSQ/edit?usp=sharing">"What are Alchemy Pods?" by Adam Brock</a>.
+          With these requests and the nature of the groups in mind, we will be modeling this feature after the patterns identified in the article <a href="https://docs.google.com/document/d/1vUHr_Q18GwJ8Lsp49J3gaIrOp3xi3Cv0PmHeSMPMlSQ/edit?usp=sharing">"What are Alchemy Pods?" by Adam Brock</a>.
         </p>
         <p className="text-center">
           This feature is currently under construction and may be complete by the end of February.  If you would like to be notified when the feature has been released, please use <a href="/contact-us">the contact form</a> to share your email address and request to receive newsletters (you can cancel at anytime and your information will never be shared).

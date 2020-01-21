@@ -11,6 +11,7 @@ export const Index = withRouter((props) => {
       <p className="text-center">a platform with commitment to social justice, premised on mutual support and owned by you, the community</p>
       <div class="alert alert-warning" role="alert">
         <h1 className="display-4 text-center">Hawthorn's Transition to Small Private Groups</h1>
+        <p className="text-center"><u>Updated January 20, 2020</u></p>
         <p className="text-center">
           In all of the user interviews we have conducted with local community leaders, similar feature requests around private groups have been made.  These requests describe a private communication and administrative tool to compliment and aid in the facillitation of real-world small groups (bipoc and qtpoc groups, women's and men's groups, an antiracist group, people returning from therapeutic retreats who need to stay in contact and integrate the retreat).  Hawthorn direction will pivot away from public communities with default user anonymity to these private, more intimate communities with a required user who may reveal details of their identity at their discretion.
         </p>

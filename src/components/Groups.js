@@ -3,13 +3,9 @@ import { withRouter } from "react-router"
 import { useQuery } from '@apollo/react-hooks';
 import { GROUPS } from '../services/graphql/queries'
 import { errorHandler } from '../services/graphql/errorHandler'
-import { AddGroup } from './AddGroup';
 import { GroupPreview } from './GroupPreview';
 
 export const Groups = withRouter((props) => {
-  const [moderated, setModerated] = useState(false)
-  const [showNewGroupForm, setShowNewGroupForm] = useState(false)
-
   const { loading, error, data, refetch } = useQuery(GROUPS,
   {
     onError(error) {
@@ -17,34 +13,10 @@ export const Groups = withRouter((props) => {
     }
   })
 
-  let groupAdded = function() {
-    setShowNewGroupForm(!showNewGroupForm)
-    refetch()
-  }
-
-  let newGroupForm
-  let newGroupButton
-  if (showNewGroupForm) {
-    newGroupForm = <AddGroup updateParent={groupAdded} setModerated={setModerated}/>
-  } else {
-    newGroupButton = <button
-                      type="button"
-                      className="btn btn-outline-secondary btn-circle m-3"
-                      title="Create a new community"
-                      onClick={() => setShowNewGroupForm(!showNewGroupForm)}>+</button>
-  }
-
-
   if (loading) return <p>Loading...</p>;
 
   if (error) return <p>Error :(</p>;
 
-  let moderationAlert = <div />
-  if (moderated) {
-    moderationAlert = <div className="alert alert-warning" role="alert">
-      The content of your community name or description may violate the <a href='/code-of-conduct'>Hawthorn Code of Conduct</a>.  A moderator will review your response shortly and publish it if it falls within the Code of Conduct.
-    </div>
-  }
   if (data.groups.length > 0) {
     let groupCards = []
     data.groups.forEach((group, i) =>{
@@ -62,15 +34,6 @@ export const Groups = withRouter((props) => {
     });
     return (
       <div>
-        <h1 className="display-3 text-center">Communities of Support
-          <small>
-            {newGroupButton}
-          </small>
-        </h1>
-        <p className="text-muted text-center lead">find your people</p>
-        {newGroupForm}
-        {moderationAlert}
-
         <div className="card-deck">
           {groupCards}
         </div>
@@ -80,9 +43,6 @@ export const Groups = withRouter((props) => {
     return (
       <div>
         <h1>welcome.</h1>
-        <p>there is nothing to see here yet. create a community to get started</p>
-        {moderationAlert}
-        {newGroupForm}
       </div>
     )
   }

@@ -1,6 +1,42 @@
 import { gql } from 'apollo-boost';
 
 // Queries
+export const ACCOUNT = gql`
+query Account($userId: String!) {
+  account(userId: $userId) {
+    id
+    email
+    firstName
+    imageUrl
+    lastName
+    username
+  }
+}
+`;
+
+export const FUSIONAUTH_CONFIG = gql`
+query {
+  fusionAuthConfig{
+      endpoint
+      clientId
+      tenantId
+      redirectUri
+  }
+}
+`;
+
+export const LOGIN = gql`
+query Login($code: String!) {
+  login(code: $code)
+}
+`;
+
+export const LOGOUT = gql`
+query {
+  logout
+}
+`;
+
 export const GROUP = gql`
   query Group($id: ID!) {
     group(id:$id) {
@@ -86,5 +122,11 @@ mutation CreateThread($title: String!, $groupId: ID!) {
     }
     title
   }
+}
+`;
+
+export const REGISTER = gql`
+mutation Register($email: String!, $password: String!, $username: String!) {
+  register(email: $email, password: $password, username: $username)
 }
 `;

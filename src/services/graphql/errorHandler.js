@@ -1,6 +1,10 @@
 export const errorHandler = (error, history) => {
   if (error.graphQLErrors) {
     error.graphQLErrors.forEach(graphQLError => {
+      console.log('graphQLError', graphQLError)
+      if (graphQLError.message === "Invalid Authorization Code") {
+        history.push("/logout")
+      }
       const { extensions } = graphQLError
       if (extensions) {
         switch (extensions.code) {

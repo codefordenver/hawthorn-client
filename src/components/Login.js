@@ -4,35 +4,25 @@ import qs from 'qs'
 import { withRouter } from "react-router"
 import { useQuery } from '@apollo/react-hooks';
 import { errorHandler } from '../services/graphql/errorHandler'
-import { FUSIONAUTH_CONFIG } from '../services/graphql/queries'
 import { LOGIN } from '../services/graphql/queries'
+import NetworkError from './NetworkError'
 
-export const Login = withRouter((props) => {
+const Login = withRouter((props) => {
   // If a `code` parameter exists on the URL we are redirecting back from the
   // authorzation server
   const authorizationCode = qs.parse(props.location.search, { ignoreQueryPrefix: true }).code
   if (authorizationCode) {
     // We now need to exchange the code for a token
     const { loading, error, data } = useQuery(LOGIN, {
-      onError(error) {
-         errorHandler(error, props.history)
+      onError(loginError) {
+         errorHandler(loginError, props.history)
       },
       variables: { code: authorizationCode }
     })
 
-    if (loading) {
+    if (loading) return <h2>Loading...</h2>
+    if (error) return <NetworkError action="completing your account registration" />
 
-      return (
-        <h2>Loading...</h2>
-      )
-    }
-    if (error) {
-      return (
-        <h2>Error :( {JSON.stringify(error)}</h2>
-      )
-    }
-
-    console.log("data.login", data.login)
     if (data.login) {
       return (
         <Redirect to={{
@@ -47,4 +37,6 @@ export const Login = withRouter((props) => {
   // Code Grant by redirecting the user to the auth server for login
   window.location = props.authorizeUri
   return null
-});
+})
+
+export default Login

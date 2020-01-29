@@ -4,19 +4,25 @@ import { withRouter } from "react-router"
 import { useMutation } from '@apollo/react-hooks';
 import { errorHandler } from '../services/graphql/errorHandler'
 import { REGISTER } from '../services/graphql/queries'
+import NetworkError from './NetworkError'
 
-export const Register = withRouter((props) => {
-  let email, password, username;
+const Register = withRouter((props) => {
+  let email
+  let password
+  let username
+  let errorMessage = <div />
   const [register, { data, loading, error }] = useMutation(
     REGISTER,
     {
-      onError(error) {
-         errorHandler(error, props.history)
+      onError(registerError) {
+         errorHandler(registerError, props.history)
       },
   });
 
+
   if (loading) return <p>Loading...</p>
-  if (error) return <p>I'm so very sorry, a real bad error occured while adding your response</p>
+  if (error) errorMessage = <NetworkError action="completing your account registration" />
+
   if (data) {
     return (
       <Redirect to="/login"/>
@@ -33,36 +39,39 @@ export const Register = withRouter((props) => {
           }
         }}
       >
-        <div class="form-row">
-          <div class="col-md-4 mb-3">
+        <div className="form-row">
+          <div className="col-md-4 mb-3">
             <label for="inputUsername">Username</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroupPrepend">@</span>
+            <div className="input-group">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="inputGroupPrepend">@</span>
               </div>
-              <input type="text" class="form-control" id="inputUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required ref={node => {
+              <input type="text" className="form-control" id="inputUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required ref={node => {
                   username = node;
                 }}/>
             </div>
           </div>
-          <div class="col-md-4 mb-3">
+          <div className="col-md-4 mb-3">
             <label for="inputEmail">Email</label>
-            <div class="input-group">
-              <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" required ref={node => {
+            <div className="input-group">
+              <input type="email" className="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" required ref={node => {
                   email = node;
                 }}/>
-              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else. We use it for password resets, and sending notifications (notification settings can be update later)</small>
+              <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else. We use it for password resets, and sending notifications (notification settings can be update later)</small>
             </div>
           </div>
         </div>
-        <div class="form-group">
+        <div className="form-group">
           <label for="inputEmail">Password</label>
-          <input type="password" class="form-control" id="inputEmail" placeholder="Password" required ref={node => {
+          <input type="password" className="form-control" id="inputEmail" placeholder="Password" required ref={node => {
               password = node;
             }}/>
         </div>
         <button type="submit" className="btn btn-primary">submit</button>
       </form>
+      {errorMessage}
     </div>
   )
-});
+})
+
+export default Register

@@ -7,15 +7,15 @@ The following software must be installed prior to running `hawthorn-server`:
 * [Node.js](https://nodejs.org/en/) - Node is used for running `hawthorn-client` and installing dependent JavaScript packages using the `npm` command.
 
 ## Set up a development environment
-The following steps walk you through downloading `hawthorn-client`, installing some last minute packages, and running the server so that you can start coding.  Please [make a pull request](https://github.com/trex/hawthorn-client/pulls) if this process is incomplete or inaccurate, and [open an issue](https://github.com/trex/hawthorn-client/issues) if you cannot get things working.
+The following steps walk you through downloading `hawthorn-client`, installing some last minute packages, and running the server so that you can start coding.  Please [make a pull request](https://github.com/codefordenver/hawthorn-client/pulls) if this process is incomplete or inaccurate, and [open an issue](https://github.com/codefordenver/hawthorn-client/issues) if you cannot get things working.
 
 ### Clone `hawthorn-client`
 Download the source code and change directories into your freshly cloned `hawthorn-client` directory:
 ```sh
 #If your `git` is configured with SSH:
-git clone git@github.com:trex/hawthorn-client.git && cd hawthorn-client
+git clone git@github.com:codefordenver/hawthorn-client.git && cd hawthorn-client
 #If your `git` is configured with HTTPS:
-git clone https://github.com/trex/hawthorn-client.git && cd hawthorn-client
+git clone https://github.com/codefordenver/hawthorn-client.git && cd hawthorn-client
 ```
 
 ### Create a configuration file

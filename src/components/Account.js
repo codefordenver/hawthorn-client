@@ -1,32 +1,26 @@
 import React from 'react'
+import { Redirect } from "react-router-dom"
 import { withRouter } from "react-router"
 import { useQuery } from '@apollo/react-hooks';
 import { errorHandler } from '../services/graphql/errorHandler'
 import { ACCOUNT } from '../services/graphql/queries'
 import { Avatar } from './Avatar'
+import NetworkError from './NetworkError'
 
-export const Account = withRouter((props) => {
+const Account = withRouter((props) => {
   // TODO - will userId ever come in on props directly in addtion to props.location
   //  as it does on redirect from Login?
 
   // We now need to exchange the code for a token
   const { loading, error, data } = useQuery(ACCOUNT, {
-    onError(error) {
-       errorHandler(error, props.history)
+    onError(accountError) {
+       errorHandler(accountError, props.history)
     },
     variables: { userId: props.location.state.userId }
   })
 
-  if (loading) {
-    return (
-      <h2>Loading...</h2>
-    )
-  }
-  if (error) {
-    return (
-      <h2>Error :( {JSON.stringify(error)}</h2>
-    )
-  }
+  if (loading) return <h2>Loading...</h2>
+  if (error) return <NetworkError action="retrieving your account information" />
 
   if (data.account) {
     return (
@@ -49,5 +43,7 @@ export const Account = withRouter((props) => {
 
   // If the request returns null, the user requesting the account does not have permissions,
   //  force a logout
-  props.history.push("/logout")
-});
+  return <Redirect to="/logout" />
+})
+
+export default Account

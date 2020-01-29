@@ -22,12 +22,12 @@ export const Navigation = (props) => {
           <li class="nav-item">
             <a class="nav-link" href="/contact-us">Contact Us</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Account</a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="/login">Sign-in</a>
-              <a class="dropdown-item" href="/register">Register</a>
-              <a class="dropdown-item" href="/logout">Logout</a>
+          <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Account</a>
+            <div className="dropdown-menu">
+              <a className="dropdown-item" href="/login">Sign-in</a>
+              <a className="dropdown-item" href="/register">Register</a>
+              <a className="dropdown-item" href="/logout">Logout</a>
             </div>
           </li>
         </ul>

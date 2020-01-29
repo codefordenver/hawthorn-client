@@ -8,6 +8,9 @@ import { Avatar } from './Avatar'
 import NetworkError from './NetworkError'
 
 const Account = withRouter((props) => {
+  // If we don't have the userId, they are not logged in, redirect to login
+  if (!props.location.state || !props.location.state.userId) return <Redirect to="/login" />
+
   // TODO - will userId ever come in on props directly in addtion to props.location
   //  as it does on redirect from Login?
 

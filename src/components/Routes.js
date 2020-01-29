@@ -54,7 +54,7 @@ export const Routes = withRouter((props) => {
         <Route exact path="/contact-us" component={ContactForm} />
         <Route path="/community/:groupId" component={Group} />
         <Route exact path='/communities' component={Groups} />
-        <Route exact path="/login" component={Login}><Login authorizeUri={authorizeUri} />< /Route>
+        <Route exact path="/login" component={Login}><Login authorizeUri={authorizeUri} /></Route>
         <Route exact path="/logout" component={Logout} />
         <Route exact path='/logout/sso' component={() => {
             window.location = logoutUri

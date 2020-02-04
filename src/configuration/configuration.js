@@ -1,1 +1,1 @@
-export const configuration = require ('./configuration.json');
+export default require ('./configuration.json');

@@ -45,8 +45,8 @@ export const Thread = withRouter((props) => {
           <h3 className="text-center">
           <button
             type="button"
-            className={"btn btn-link btn-lg"}
-            onClick={() => {props.history.push('/community/' + data.thread.group.id)}}>
+            className="btn btn-link btn-lg"
+            onClick={() => {props.history.push(`/community/${  data.thread.group.id}`)}}>
             &larr; back to '{data.thread.group.name}'
             </button>
           </h3>
@@ -59,11 +59,11 @@ export const Thread = withRouter((props) => {
         </div>
       </div>
     )
-  } else {
+  } 
     return (
       <div className="border-bottom border-gray m-3">
         <p>Thread not found</p>
       </div>
     )
-  }
+  
 })

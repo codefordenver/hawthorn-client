@@ -1,4 +1,4 @@
-export const errorHandler = (error, history) => {
+export default (error, history) => {
   if (error.graphQLErrors) {
     error.graphQLErrors.forEach(graphQLError => {
       console.log('graphQLError', graphQLError)

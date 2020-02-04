@@ -9,7 +9,7 @@ export const Index = withRouter((props) => {
       <Header />
       <p className="lead text-center">Hawthorn is a place for communities;</p>
       <p className="text-center">a platform with commitment to social justice, premised on mutual support and owned by you, the community</p>
-      <div class="alert alert-warning" role="alert">
+      <div className="alert alert-warning" role="alert">
         <h1 className="display-4 text-center">Hawthorn's Transition to Small Private Groups</h1>
         <p className="text-center"><u>Updated January 20, 2020</u></p>
         <p className="text-center">

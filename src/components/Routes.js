@@ -1,9 +1,9 @@
 import React from 'react';
 import { withRouter } from "react-router"
 import { useQuery } from '@apollo/react-hooks';
+import { Switch, Route } from "react-router-dom";
 import { errorHandler } from '../services/graphql/errorHandler'
 import { FUSIONAUTH_CONFIG } from '../services/graphql/queries'
-import { Switch, Route } from "react-router-dom";
 import { About } from './About';
 import Account from './Account';
 import { CodeOfConduct } from './CodeOfConduct';
@@ -20,7 +20,7 @@ import { Thread } from './Thread';
 
 export const Routes = withRouter((props) => {
   // Retrieve authorization config from the server so we can build auth URIs
-  var { loading, error, data } = useQuery(FUSIONAUTH_CONFIG,
+  const { loading, error, data } = useQuery(FUSIONAUTH_CONFIG,
   {
     onError(error) {
        errorHandler(error, props.history)
@@ -28,12 +28,12 @@ export const Routes = withRouter((props) => {
   })
   if (loading) {
     return <p>Loading</p>
-  } else if (error) {
+  } if (error) {
     return <p>An unexpected error occurred, please come back later</p>
   }
   if (loading) {
     return <p>Loading</p>
-  } else if (error) {
+  } if (error) {
     return <p>An unexpected error occurred, please come back later</p>
   }
   const configuration = {

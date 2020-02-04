@@ -18,7 +18,7 @@ export const Groups = withRouter((props) => {
   if (error) return <p>Error :(</p>;
 
   if (data.groups.length > 0) {
-    let groupCards = []
+    const groupCards = []
     data.groups.forEach((group, i) =>{
       groupCards.push(<GroupPreview
                   key={group.id}
@@ -28,7 +28,7 @@ export const Groups = withRouter((props) => {
                   threads={group.threads} />)
       if((i+1) % 3 == 0){
         groupCards.push(
-          <div class="w-100"></div>
+          <div className="w-100" />
         )
       }
     });
@@ -39,11 +39,11 @@ export const Groups = withRouter((props) => {
         </div>
       </div>
     );
-  } else {
+  } 
     return (
       <div>
         <h1>welcome.</h1>
       </div>
     )
-  }
+  
 });

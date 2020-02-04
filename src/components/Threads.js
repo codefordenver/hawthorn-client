@@ -18,9 +18,9 @@ export const Threads = withRouter((props) => {
         </ul>
       </div>
     );
-  } else {
+  } 
     return (
       <p className="m-3">This is a new community.  Start the first conversation if you have something on your mind.</p>
     )
-  }
+  
 })

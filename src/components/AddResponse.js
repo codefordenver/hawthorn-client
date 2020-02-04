@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { withRouter } from "react-router"
 import { useMutation } from '@apollo/react-hooks';
 import { errorHandler } from '../services/graphql/errorHandler'
-import { CREATE_POST } from '../services/graphql/queries';
-import { THREAD } from '../services/graphql/queries';
+import { CREATE_POST , THREAD } from '../services/graphql/queries';
+
 
 export const AddResponse = withRouter((props) => {
   const [showResponseForm, setShowResponseForm] = useState(false)
@@ -50,7 +50,7 @@ export const AddResponse = withRouter((props) => {
                       onClick={() => setShowResponseForm(!showResponseForm)}>share your response</button>
   }
 
-  let body = <div className="mx-0 mb-3">
+  const body = <div className="mx-0 mb-3">
     {responseForm}
   </div>
 

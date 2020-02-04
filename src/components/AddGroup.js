@@ -36,7 +36,7 @@ export const AddGroup = withRouter((props) => {
         }}
       >
         <div className="form-group">
-          <label for="inputCommunityName">New community name</label>
+          <label htmlFor="inputCommunityName">New community name</label>
           <input type="text" className="form-control" id="inputCommunityName"
             placeholder="Enter community name"
             ref={node => {
@@ -45,7 +45,7 @@ export const AddGroup = withRouter((props) => {
           <small className="form-text text-danger">* required</small>
         </div>
         <div className="form-group">
-          <label for="inputCommunityDescription">Description</label>
+          <label htmlFor="inputCommunityDescription">Description</label>
           <input type="text" className="form-control" id="inputCommunityName"
             placeholder="Enter community description"
             ref={node => {

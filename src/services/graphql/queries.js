@@ -7,6 +7,11 @@ query Account($userId: String!) {
     id
     email
     firstName
+    groups{
+      id
+      name
+      isPrivate
+    }
     imageUrl
     lastName
     username
@@ -87,13 +92,10 @@ export const THREAD = gql`
 `;
 
 // Mutations
-export const CREATE_GROUP = gql`
+export const CREATE_PRIVATE_GROUP = gql`
 mutation CreateGroup($name: String!, $description: String!) {
-  createGroup(name: $name, description: $description) {
+  createPrivateGroup(name: $name, description: $description) {
     id
-    moderation {
-      status
-    }
     description
     name
   }

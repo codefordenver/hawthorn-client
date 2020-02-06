@@ -5,6 +5,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { errorHandler } from '../services/graphql/errorHandler'
 import { ACCOUNT } from '../services/graphql/queries'
 import { Avatar } from './Avatar'
+import AddGroup from './AddGroup'
 import NetworkError from './NetworkError'
 
 const Account = withRouter((props) => {
@@ -27,7 +28,7 @@ const Account = withRouter((props) => {
 
   if (data.account) {
     return (
-      <div className="bg-white rounded shadow-sm ">
+      <div className="bg-white rounded shadow-sm">
         <div className="m-3">
           <h1>Your Account Details</h1>
           <small>(this information is only visible to you)</small>
@@ -37,8 +38,15 @@ const Account = withRouter((props) => {
               <h4>username: {data.account.username}</h4>
               <p>name: <strong>{data.account.firstName} {data.account.lastName}</strong></p>
               <p>email: {data.account.email}</p>
+              <p>groups:
+                <ul>{data.account.groups.map(({name, isPrivate}, i) =>
+                  <li key={i}>({isPrivate ? "private" : "public"}) {name}</li>
+                )}</ul>
+              </p>
             </div>
           </div>
+
+          <AddGroup />
         </div>
       </div>
     );

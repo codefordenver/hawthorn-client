@@ -1,4 +1,5 @@
 export const errorHandler = (error, history) => {
+  let result
   if (error.graphQLErrors) {
     error.graphQLErrors.forEach(graphQLError => {
       console.log('graphQLError', graphQLError)
@@ -8,6 +9,9 @@ export const errorHandler = (error, history) => {
       const { extensions } = graphQLError
       if (extensions) {
         switch (extensions.code) {
+          case "BAD_USER_INPUT":
+            result = extensions.fieldErrors
+            break
           case "UNAUTHENTICATED":
           case "FORBIDDEN":
           default:
@@ -17,6 +21,7 @@ export const errorHandler = (error, history) => {
       }
     })
   }
+  return result
   // else if networkError
   // TODO - What to do here? in
 }

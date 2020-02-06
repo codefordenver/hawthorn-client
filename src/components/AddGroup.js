@@ -2,37 +2,35 @@ import React from 'react';
 import { withRouter } from "react-router"
 import { useMutation } from '@apollo/react-hooks';
 import { errorHandler } from '../services/graphql/errorHandler'
-import { CREATE_GROUP } from '../services/graphql/queries';
+import { CREATE_PRIVATE_GROUP } from '../services/graphql/queries';
+import ValidationError from './ValidationError'
 
-export const AddGroup = withRouter((props) => {
+const AddGroup = withRouter((props) => {
   let nameInput;
   let descriptionInput;
   const [createGroup, { data, loading, error }] = useMutation(
-    CREATE_GROUP,
+    CREATE_PRIVATE_GROUP,
     {
+      errorPolicy: 'all',
       onError(error) {
          errorHandler(error, props.history)
       },
   });
 
   if (loading) return <p>Loading...</p>
-  if (error) return <p>I'm so very sorry, a real bad error occured while adding your response</p>
 
   return (
     <div className="m-3">
+      <ValidationError error={error} />
+
       <form
         onSubmit={e => {
           e.preventDefault()
           if (nameInput.value && descriptionInput.value) {
-            createGroup({ variables: { name: nameInput.value, description: descriptionInput.value } }).then(function(response) {
-               props.setModerated(response.data.createGroup.moderation !== null)
-               props.updateParent()
-            })
+            createGroup({ variables: { name: nameInput.value, description: descriptionInput.value } })
           } else {
             return
           }
-          descriptionInput.value = ''
-          nameInput.value = ''
         }}
       >
         <div className="form-group">
@@ -46,7 +44,7 @@ export const AddGroup = withRouter((props) => {
         </div>
         <div className="form-group">
           <label for="inputCommunityDescription">Description</label>
-          <input type="text" className="form-control" id="inputCommunityName"
+          <input type="text" className="form-control" id="inputCommunityDescription"
             placeholder="Enter community description"
             ref={node => {
                 descriptionInput = node;
@@ -58,3 +56,5 @@ export const AddGroup = withRouter((props) => {
     </div>
   )
 })
+
+export default AddGroup

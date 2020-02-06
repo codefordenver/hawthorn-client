@@ -15,6 +15,7 @@ import { Index } from './Index';
 import Login from './Login';
 import Logout from './Logout';
 import { Navigation } from './Navigation';
+import NetworkError from './NetworkError';
 import Register from './Register';
 import { Thread } from './Thread';
 
@@ -28,14 +29,11 @@ export const Routes = withRouter((props) => {
   })
   if (loading) {
     return <p>Loading</p>
-  } else if (error) {
-    return <p>An unexpected error occurred, please come back later</p>
   }
-  if (loading) {
-    return <p>Loading</p>
-  } else if (error) {
-    return <p>An unexpected error occurred, please come back later</p>
+  if (error) {
+    return <NetworkError />
   }
+
   const configuration = {
     fusionAuth: data.fusionAuthConfig
   }

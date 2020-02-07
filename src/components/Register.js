@@ -41,7 +41,7 @@ const Register = withRouter((props) => {
       >
         <div className="form-row">
           <div className="col-md-4 mb-3">
-            <label for="inputUsername">Username</label>
+            <label htmlFor="inputUsername">Username</label>
             <div className="input-group">
               <div className="input-group-prepend">
                 <span className="input-group-text" id="inputGroupPrepend">@</span>
@@ -52,7 +52,7 @@ const Register = withRouter((props) => {
             </div>
           </div>
           <div className="col-md-4 mb-3">
-            <label for="inputEmail">Email</label>
+            <label htmlFor="inputEmail">Email</label>
             <div className="input-group">
               <input type="email" className="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" required ref={node => {
                   email = node;
@@ -62,7 +62,7 @@ const Register = withRouter((props) => {
           </div>
         </div>
         <div className="form-group">
-          <label for="inputEmail">Password</label>
+          <label htmlFor="inputEmail">Password</label>
           <input type="password" className="form-control" id="inputEmail" placeholder="Password" required ref={node => {
               password = node;
             }}/>

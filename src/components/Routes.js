@@ -9,7 +9,6 @@ import Account from './Account';
 import { CodeOfConduct } from './CodeOfConduct';
 import { ContactForm } from './ContactForm';
 import { Group } from './Group';
-import { Groups } from './Groups';
 import { Header } from './Header';
 import { Index } from './Index';
 import Login from './Login';
@@ -51,7 +50,6 @@ export const Routes = withRouter((props) => {
         <Route exact path="/code-of-conduct" component={CodeOfConduct} />
         <Route exact path="/contact-us" component={ContactForm} />
         <Route path="/community/:groupId" component={Group} />
-        <Route exact path='/communities' component={Groups} />
         <Route exact path="/login" component={Login}><Login authorizeUri={authorizeUri} /></Route>
         <Route exact path="/logout" component={Logout} />
         <Route exact path='/logout/sso' component={() => {

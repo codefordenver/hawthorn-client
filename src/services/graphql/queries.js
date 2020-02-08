@@ -9,6 +9,7 @@ query Account($userId: String!) {
     firstName
     groups{
       id
+      description
       name
     }
     imageUrl

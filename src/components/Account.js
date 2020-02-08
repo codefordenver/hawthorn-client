@@ -39,8 +39,10 @@ const Account = withRouter((props) => {
               <p>name: <strong>{data.account.firstName} {data.account.lastName}</strong></p>
               <p>email: {data.account.email}</p>
               <p>groups:
-                <ul>{data.account.groups.map(({id, name, isPrivate}, i) =>
-                  <li key={id}><a href={'/community/' + id}>{name}</a></li>
+                <ul>{data.account.groups.map(({id, name, description}) =>
+                  <li key={id}>
+                    <a href={'/community/' + id}>{name}</a><small> ({description})</small>
+                  </li>
                 )}</ul>
               </p>
             </div>

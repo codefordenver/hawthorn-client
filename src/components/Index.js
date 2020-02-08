@@ -1,7 +1,6 @@
 import React from 'react';
 import { withRouter } from "react-router"
 import { Header } from './Header';
-import { Groups } from './Groups';
 
 export const Index = withRouter((props) => {
   return (
@@ -24,11 +23,7 @@ export const Index = withRouter((props) => {
         <p className="text-center">
           This feature is currently under construction and may be complete by the end of February.  If you would like to be notified when the feature has been released, please use <a href="/contact-us">the contact form</a> to share your email address and request to receive newsletters (you can cancel at anytime and your information will never be shared).
         </p>
-        <p className="text-center">
-          The remaining public group, <a href="http://hawth.org/community/ck5ffak46000t0780bz66zj3v">"Hawthorn Community Building"</a>, may be used for feature requests, product feedback, moral support, general Hawthorn communication and whatever else emerges.
-        </p>
       </div>
-      <Groups />
     </div>
   )
 })

@@ -9,8 +9,8 @@ query Account($userId: String!) {
     firstName
     groups{
       id
+      description
       name
-      isPrivate
     }
     imageUrl
     lastName
@@ -55,19 +55,6 @@ export const GROUP = gql`
           id
           content
         }
-      }
-    }
-  }
-`;
-
-export const GROUPS = gql`
-  query {
-    groups {
-      id
-      name
-      description
-      threads{
-        title
       }
     }
   }

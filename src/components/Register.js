@@ -2,15 +2,14 @@ import React from 'react'
 import { Redirect } from "react-router-dom"
 import { withRouter } from "react-router"
 import { useMutation } from '@apollo/react-hooks';
-import { errorHandler } from '../services/graphql/errorHandler'
-import { REGISTER } from '../services/graphql/queries'
-import NetworkError from './NetworkError'
+import { errorHandler } from '../services/graphql/errorHandler';
+import { REGISTER } from '../services/graphql/queries';
+import Alert from "./atoms/Alert";
 
 const Register = withRouter((props) => {
   let email
   let password
   let username
-  let errorMessage = <div />
   const [register, { data, loading, error }] = useMutation(
     REGISTER,
     {
@@ -21,7 +20,6 @@ const Register = withRouter((props) => {
 
 
   if (loading) return <p>Loading...</p>
-  if (error) errorMessage = <NetworkError action="completing your account registration" />
 
   if (data) {
     return (
@@ -67,9 +65,9 @@ const Register = withRouter((props) => {
               password = node;
             }}/>
         </div>
-        <button type="submit" className="btn btn-primary">submit</button>
+        <button type="submit" className="btn btn-primary">Register</button>
       </form>
-      {errorMessage}
+      { error && <Alert type="danger" message={error.message} />}
     </div>
   )
 })

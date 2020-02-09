@@ -1,20 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Redirect } from "react-router-dom"
-import { withRouter } from "react-router"
+import { useHistory } from "react-router"
 import { useMutation } from '@apollo/react-hooks';
 import { errorHandler } from '../services/graphql/errorHandler';
 import { REGISTER } from '../services/graphql/queries';
 import Alert from "./atoms/Alert";
+import Input from "./atoms/Input";
 
-const Register = withRouter((props) => {
-  let email
-  let password
-  let username
+const Register = () => {
+
+  const history = useHistory();
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   const [register, { data, loading, error }] = useMutation(
     REGISTER,
     {
       onError(registerError) {
-         errorHandler(registerError, props.history)
+         errorHandler(registerError, history)
       },
   });
 
@@ -27,49 +31,48 @@ const Register = withRouter((props) => {
     )
   }
 
+
+
   return (
     <div className="m-3">
-      <form
-        onSubmit={e => {
-          e.preventDefault()
-          if (username.value) {
-            register({ variables: { email: email.value, password: password.value, username: username.value } })
-          }
-        }}
-      >
-        <div className="form-row">
-          <div className="col-md-4 mb-3">
-            <label htmlFor="inputUsername">Username</label>
-            <div className="input-group">
-              <div className="input-group-prepend">
-                <span className="input-group-text" id="inputGroupPrepend">@</span>
-              </div>
-              <input type="text" className="form-control" id="inputUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required ref={node => {
-                  username = node;
-                }}/>
-            </div>
-          </div>
-          <div className="col-md-4 mb-3">
-            <label htmlFor="inputEmail">Email</label>
-            <div className="input-group">
-              <input type="email" className="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" required ref={node => {
-                  email = node;
-                }}/>
-              <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else. We use it for password resets, and sending notifications (notification settings can be update later)</small>
-            </div>
-          </div>
-        </div>
-        <div className="form-group">
-          <label htmlFor="inputEmail">Password</label>
-          <input type="password" className="form-control" id="inputEmail" placeholder="Password" required ref={node => {
-              password = node;
-            }}/>
-        </div>
-        <button type="submit" className="btn btn-primary">Register</button>
-      </form>
+
+          <Input
+            name="Username"
+            value={username}
+            prependLabel="@"
+            onChange={e=>setUsername(e.target.value)}
+            placeholder="Username"
+            required
+          />
+          <Input 
+            name="Email" 
+            value={email} 
+            onChange={e=>setEmail(e.target.value)} 
+            placeholder="Enter email" 
+            required 
+            helpText="We'll never share your email with anyone else. We use it for password resets, and sending notifications (notification settings can be update later)"
+          />
+
+          <Input
+            name="Password"
+            type="password"
+            value={password}
+            onChange={e=>setPassword(e.target.value)}
+            placeholder="Password"
+            required
+          />
+
+        <button
+          className="btn btn-primary"
+          disabled={!username || !password || !email}
+          onClick={() => register({ variables: { email, password, username } })}
+        >
+          Register
+        </button>
+
       { error && <Alert type="danger" message={error.message} />}
     </div>
   )
-})
+}
 
 export default Register

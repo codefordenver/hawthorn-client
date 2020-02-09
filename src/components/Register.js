@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { Redirect } from "react-router-dom"
 import { useHistory } from "react-router"
 import { useMutation } from '@apollo/react-hooks';
 import { errorHandler } from '../services/graphql/errorHandler';
 import { REGISTER } from '../services/graphql/queries';
 import Alert from "./atoms/Alert";
 import Input from "./atoms/Input";
+import Button from "./atoms/Button";
 
 const Register = () => {
 
@@ -22,55 +22,50 @@ const Register = () => {
       },
   });
 
-
-  if (loading) return <p>Loading...</p>
-
   if (data) {
-    return (
-      <Redirect to="/login"/>
-    )
+    history.push("/login");
   }
-
 
 
   return (
     <div className="m-3">
 
-          <Input
-            name="Username"
-            value={username}
-            prependLabel="@"
-            onChange={e=>setUsername(e.target.value)}
-            placeholder="Username"
-            required
-          />
-          <Input 
-            name="Email" 
-            value={email} 
-            onChange={e=>setEmail(e.target.value)} 
-            placeholder="Enter email" 
-            required 
-            helpText="We'll never share your email with anyone else. We use it for password resets, and sending notifications (notification settings can be update later)"
-          />
+        <Input
+          name="Username"
+          value={username}
+          prependLabel="@"
+          onChange={e=>setUsername(e.target.value)}
+          placeholder="Username"
+          required
+        />
+        <Input 
+          name="Email" 
+          value={email} 
+          onChange={e=>setEmail(e.target.value)} 
+          placeholder="Enter email" 
+          required 
+          helpText="We'll never share your email with anyone else. We use it for password resets, and sending notifications (notification settings can be update later)"
+        />
 
-          <Input
-            name="Password"
-            type="password"
-            value={password}
-            onChange={e=>setPassword(e.target.value)}
-            placeholder="Password"
-            required
-          />
+        <Input
+          name="Password"
+          type="password"
+          value={password}
+          onChange={e=>setPassword(e.target.value)}
+          placeholder="Password"
+          required
+        />
 
-        <button
-          className="btn btn-primary"
-          disabled={!username || !password || !email}
+        <Button
+          type="primary"
           onClick={() => register({ variables: { email, password, username } })}
-        >
-          Register
-        </button>
+          disabled={!username || !password || !email}
+          loading={loading}
+          text="Register"
+        />
 
       { error && <Alert type="danger" message={error.message} />}
+
     </div>
   )
 }

@@ -1,7 +1,6 @@
 import React from 'react'
 
-export const About = (props) => {
-  return (
+export const About = (
     <div className="bg-white rounded shadow-sm ">
       <div className="m-3">
         <h1>What is Hawthorn?</h1>
@@ -47,4 +46,3 @@ export const About = (props) => {
       </div>
     </div>
   );
-};

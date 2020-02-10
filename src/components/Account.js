@@ -1,6 +1,5 @@
 import React from 'react'
-import { Redirect } from "react-router-dom"
-import { withRouter } from "react-router"
+import { useLocation, useHistory } from "react-router"
 import { useQuery } from '@apollo/react-hooks';
 import { errorHandler } from '../services/graphql/errorHandler'
 import { ACCOUNT } from '../services/graphql/queries'
@@ -8,9 +7,12 @@ import { Avatar } from './Avatar'
 import AddGroup from './AddGroup'
 import NetworkError from './NetworkError'
 
-const Account = withRouter((props) => {
+const Account = () => {
+  const location = useLocation();
+  const history = useHistory();
+
   // If we don't have the userId, they are not logged in, redirect to login
-  if (!props.location.state || !props.location.state.userId) return <Redirect to="/login" />
+  if (!location.state || !location.state.userId) history.push("/login");
 
   // TODO - will userId ever come in on props directly in addtion to props.location
   //  as it does on redirect from Login?
@@ -18,9 +20,9 @@ const Account = withRouter((props) => {
   // We now need to exchange the code for a token
   const { loading, error, data } = useQuery(ACCOUNT, {
     onError(accountError) {
-       errorHandler(accountError, props.history)
+       errorHandler(accountError, history)
     },
-    variables: { userId: props.location.state.userId }
+    variables: { userId: location.state.userId }
   })
 
   if (loading) return <h2>Loading...</h2>
@@ -38,13 +40,16 @@ const Account = withRouter((props) => {
               <h4>username: {data.account.username}</h4>
               <p>name: <strong>{data.account.firstName} {data.account.lastName}</strong></p>
               <p>email: {data.account.email}</p>
-              <p>groups:
-                <ul>{data.account.groups.map(({id, name, description}) =>
-                  <li key={id}>
-                    <a href={'/community/' + id}>{name}</a><small> ({description})</small>
-                  </li>
-                )}</ul>
-              </p>
+              <div>
+                <p>groups:</p>
+                <ul>
+                  {data.account.groups.map(({id, name, description}) =>
+                    <li key={id}>
+                      <a href={'/community/' + id}>{name}</a><small> ({description})</small>
+                    </li>
+                  )}
+                </ul>
+              </div>
             </div>
           </div>
 
@@ -52,11 +57,10 @@ const Account = withRouter((props) => {
         </div>
       </div>
     );
-  }
+  } else history.push("/logout");
 
   // If the request returns null, the user requesting the account does not have permissions,
   //  force a logout
-  return <Redirect to="/logout" />
-})
+}
 
 export default Account

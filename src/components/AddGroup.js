@@ -3,8 +3,7 @@ import { useHistory } from "react-router"
 import { useMutation } from '@apollo/react-hooks';
 import { errorHandler } from '../services/graphql/errorHandler'
 import { CREATE_PRIVATE_GROUP } from '../services/graphql/queries';
-import ValidationError from './ValidationError';
-
+import Alert from "./atoms/Alert";
 import Input from "./atoms/Input";
 import Button from "./atoms/Button";
 
@@ -22,12 +21,10 @@ const AddGroup = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
 
-  console.log("!!!!!error", error);
-
   return (
     <div className="m-3">
 
-      <ValidationError error={error} />
+      { error && <Alert type="danger" message={error.message} />}
 
       <Input
           value={name}

@@ -1,21 +1,26 @@
 import React from 'react'
 import hash from 'object-hash'
+import Alert from "./atoms/Alert";
 
-const ValidationError = (props) => {
-  let fieldErrors = null
-  if (props.error && props.error.graphQLErrors) {
-    fieldErrors = <div className="alert alert-danger" role="alert">
+const ValidationError = ({error}) => {
+
+  return (
+  <Alert type="danger">
       <ul>
-      {props.error.graphQLErrors.filter((e) => {
-            return e.extensions && e.extensions.code === "BAD_USER_INPUT" && e.extensions.fieldErrors
-        }).map(({ extensions }) => (
-          extensions.fieldErrors.map(errorMessage => <li key={hash(extensions)}>{errorMessage}</li>)
-      ))}
+        {
+          error?.graphQLErrors
+          .filter(({ extensions }) => {
+                return (extensions?.code === "BAD_USER_INPUT" 
+                && extensions?.fieldErrors)
+          })
+          .map(({ extensions }) => extensions.fieldErrors.map(
+                errorMessage => <li key={hash(extensions)}>{errorMessage}</li>
+              )
+          )
+        }
       </ul>
-    </div>
-  }
-
-  return fieldErrors
+  </Alert>
+  );
 }
 
 export default ValidationError

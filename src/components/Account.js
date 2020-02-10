@@ -12,7 +12,9 @@ const Account = () => {
   const history = useHistory();
 
   // If we don't have the userId, they are not logged in, redirect to login
-  if (!location.state || !location.state.userId) history.push("/login");
+  if (!location.state || !location.state.userId){
+    history.push("/login");
+  };
 
   // TODO - will userId ever come in on props directly in addtion to props.location
   //  as it does on redirect from Login?
@@ -22,7 +24,7 @@ const Account = () => {
     onError(accountError) {
        errorHandler(accountError, history)
     },
-    variables: { userId: location.state.userId }
+    variables: { userId: location.state?.userId }
   })
 
   if (loading) return <h2>Loading...</h2>

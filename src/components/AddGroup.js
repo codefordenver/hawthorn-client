@@ -3,7 +3,7 @@ import { useHistory } from "react-router"
 import { useMutation } from '@apollo/react-hooks';
 import { errorHandler } from '../services/graphql/errorHandler'
 import { CREATE_PRIVATE_GROUP } from '../services/graphql/queries';
-import Alert from "./atoms/Alert";
+import ValidationError from "./ValidationError";
 import Input from "./atoms/Input";
 import Button from "./atoms/Button";
 
@@ -18,13 +18,15 @@ const AddGroup = () => {
       },
   });
 
+  console.log("data!!!", data);    // TODO: update groups on page dynamically on add
+
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
 
   return (
     <div className="m-3">
 
-      { error && <Alert type="danger" message={error.message} />}
+      { error && <ValidationError error={error} />}
 
       <Input
           value={name}

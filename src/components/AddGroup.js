@@ -1,60 +1,54 @@
-import React from 'react';
-import { withRouter } from "react-router"
+import React, { useState } from 'react';
+import { useHistory } from "react-router"
 import { useMutation } from '@apollo/react-hooks';
 import { errorHandler } from '../services/graphql/errorHandler'
 import { CREATE_PRIVATE_GROUP } from '../services/graphql/queries';
-import ValidationError from './ValidationError'
+import Alert from "./atoms/Alert";
+import Input from "./atoms/Input";
+import Button from "./atoms/Button";
 
-const AddGroup = withRouter((props) => {
-  let nameInput;
-  let descriptionInput;
+const AddGroup = () => {
+  const history = useHistory();
   const [createGroup, { data, loading, error }] = useMutation(
     CREATE_PRIVATE_GROUP,
     {
       errorPolicy: 'all',
       onError(error) {
-         errorHandler(error, props.history)
+         errorHandler(error, history)
       },
   });
 
-  if (loading) return <p>Loading...</p>
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
 
   return (
     <div className="m-3">
-      <ValidationError error={error} />
 
-      <form
-        onSubmit={e => {
-          e.preventDefault()
-          if (nameInput.value && descriptionInput.value) {
-            createGroup({ variables: { name: nameInput.value, description: descriptionInput.value } })
-          } else {
-            return
-          }
-        }}
-      >
-        <div className="form-group">
-          <label for="inputCommunityName">New community name</label>
-          <input type="text" className="form-control" id="inputCommunityName"
-            placeholder="Enter community name"
-            ref={node => {
-              nameInput = node;
-            }}/>
-          <small className="form-text text-danger">* required</small>
-        </div>
-        <div className="form-group">
-          <label for="inputCommunityDescription">Description</label>
-          <input type="text" className="form-control" id="inputCommunityDescription"
-            placeholder="Enter community description"
-            ref={node => {
-                descriptionInput = node;
-            }} />
-          <small className="form-text text-danger">* required</small>
-        </div>
-        <button type="submit" className="btn btn-primary">submit</button>
-      </form>
+      { error && <Alert type="danger" message={error.message} />}
+
+      <Input
+          value={name}
+          onChange={e=>setName(e.target.value)}
+          placeholder="Enter community name"
+          required
+      />
+
+      <Input
+          value={description}
+          onChange={e=>setDescription(e.target.value)}
+          placeholder="Enter community description"
+          required
+      />
+
+      <Button
+        type="primary"
+        onClick={()=>createGroup({ variables: { name, description } })}
+        disabled={!name || !description}
+        loading={loading}
+        text="Add Group"
+      />
     </div>
   )
-})
+}
 
 export default AddGroup

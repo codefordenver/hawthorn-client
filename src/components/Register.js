@@ -26,7 +26,6 @@ const Register = () => {
     history.push("/login");
   }
 
-
   return (
     <div className="m-3">
 
@@ -38,6 +37,7 @@ const Register = () => {
           placeholder="Username"
           required
         />
+
         <Input 
           name="Email" 
           value={email} 

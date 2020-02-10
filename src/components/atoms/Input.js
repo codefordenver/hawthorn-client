@@ -1,24 +1,46 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Input({name, type="text", value, onChange, placeholder, required, prependLabel, helpText}) {
+export default function Input({
+    name,
+    type="text",
+    value,
+    onChange,
+    placeholder,
+    required,
+    prependLabel,
+    helpText
+    }) {
      return (
-        <div className="col-md-4 mb-3">
-            <label>{name}</label>
+        <div>
+            {name && <label>{name}</label>}
             <div className="input-group">
-                {prependLabel && <div className="input-group-prepend">
-                    <span className="input-group-text">{prependLabel}</span>
-                </div>}
 
-                <input type={type} className="form-control" placeholder={placeholder} required={required} onChange={onChange} value={value}/>
+                {
+                    prependLabel && (
+                        <div className="input-group-prepend">
+                            <span className="input-group-text">{prependLabel}</span>
+                        </div>
+                    )
+                }
+
+                <input 
+                    className="form-control"
+                    value={value}
+                    onChange={onChange}
+                    type={type}
+                    placeholder={placeholder}
+                    required={required}
+                />
+                {required && <small className="form-text text-danger">* required</small>}
             </div>
-            {helpText && <small id="emailHelp" className="form-text text-muted">{helpText}</small>}
+            {helpText && <small className="form-text text-muted">{helpText}</small>}
       </div>
      );
 }
 
 Input.propTypes = {
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     type: PropTypes.string,

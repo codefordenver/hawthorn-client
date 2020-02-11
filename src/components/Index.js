@@ -15,7 +15,7 @@ export const Index = withRouter((props) => {
       />
       </h1>
       <p className="lead text-center">an alternative to FaceBook/Google Groups, with commitment to social justice, premised on mutual support and owned by you, the community</p>
-      <p className="text-center">A volunteer team with Code for Denver is building the initial platform now. Please sign up for an account now, explore, and give us feedback on what we have so far.</p>
+      <p className="text-center">A volunteer team with <a href='https://codefordenver.org/' target='_blank' rel="noopener noreferrer">Code for Denver</a> is building the initial platform now. Please sign up for an account now, explore, and give us feedback on what we have so far.</p>
     </div>
   )
 })

@@ -11,9 +11,6 @@ export const Navigation = (props) => {
       <div className="collapse navbar-collapse" id="primaryNavigation">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item">
-            <a className="nav-link" href="/communities">Browse Communities</a>
-          </li>
-          <li className="nav-item">
             <a className="nav-link" href="/about">About Hawthorn</a>
           </li>
           <li className="nav-item">
